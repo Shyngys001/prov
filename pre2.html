@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <!-- SEO and Open Graph Tags -->
+  <title>PROVENT | Digital Marketing Agency</title>
+  <meta name="description" content="Provent - A Dubai-based digital marketing agency offering advanced SMM, PR, and AI analytics. Boost your business growth with us.">
+  <meta name="keywords" content="digital marketing, SMM, PR, AI, analytics, dubai, Provent">
+  <meta property="og:title" content="PROVENT | Digital Marketing Agency">
+  <meta property="og:description" content="Provent - A Dubai-based digital marketing agency offering advanced SMM, PR, and AI analytics. Boost your business growth with us.">
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=PROVENT">
+  <meta property="og:url" content="https://example.com">
+  <meta property="og:type" content="website">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <img class="logo_img" src="Provent.png" alt="Provent Agency">
+    </div>
+    <!-- Desktop Navbar -->
+    <nav class="navbar">
+      <a href="#about-us" data-en="About Us" data-ru="О нас" data-ar="معلومات عنا">About Us</a>
+      <a href="#why-us" data-en="Why Us" data-ru="Почему мы" data-ar="لماذا نحن">Why Us</a>
+      <a href="#services" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Services</a>
+      <a href="#packages" data-en="Packages" data-ru="Пакеты" data-ar="الباقات">Packages</a>
+      <a href="#projects" data-en="Projects" data-ru="Проекты" data-ar="المشاريع">Projects</a>
+      <a href="#team-slider" data-en="Team" data-ru="Команда" data-ar="الفريق">Team</a>
+      <a href="#contact" data-en="Contact" data-ru="Контакты" data-ar="اتصل بنا">Contact</a>
+      <!-- Прямая ссылка на Instagram -->
+      <a href="https://www.instagram.com/provent_agency?igsh=cjlmNTVhYjZzMDdr" target="_blank" style="color:#E1306C; font-weight:600;">
+        <i class="fab fa-instagram"></i> 
+      </a>
+      <div class="lang-switcher-buttons">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+        <button class="lang-btn" onclick="setLang('ru')">RU</button>
+      </div>
+    </nav>
+    <!-- Mobile Header Elements: Dropdown and Burger -->
+    <div class="mobile-header">
+      <div class="lang-switcher-dropdown">
+        <button class="dropdown-toggle">Language</button>
+        <div class="dropdown-menu">
+          <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('en'); toggleDropdown()">EN</button>
+            <button class="lang-btn" onclick="setLang('ar'); toggleDropdown()">عربي</button>
+            <button class="lang-btn" onclick="setLang('ru'); toggleDropdown()">RU</button>
+          </div>
+        </div>
+      </div>
+      <div class="burger-icon" id="burgerBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <style>
+  :root {
+    --primary: #0A0A0A;
+    --secondary: #FFFFFF;
+    --accent: #775FE1;
+    --text: #3D3D3D;
+    --section-padding: 100px;
+    --border-radius: 16px;
+    --shadow: 0 12px 24px rgba(0,0,0,0.05);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  [dir="rtl"] * {
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  body {
+    background: var(--secondary);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ---------------- HEADER ---------------- */
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 0.6rem 5%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    transition: 0.3s ease;
+  }
+
+  .logo_img {
+    width: 150px;
+    background-color: #fff;
+    display: inline-block;
+  }
+
+  /* Desktop Navbar */
+  .navbar {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .navbar a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  .navbar a:hover {
+    color: var(--accent);
+  }
+
+  /* Language Switcher for Desktop (buttons) */
+  .lang-switcher-buttons {
+    display: block;
+  }
+  .lang-switcher-buttons .lang-btn {
+    background: none;
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+  .lang-switcher-buttons .lang-btn.active {
+    background: var(--primary);
+    color: var(--secondary);
+  }
+
+  /* Mobile Header Elements: dropdown and burger icon container */
+  .mobile-header {
+    display: none;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Custom Dropdown for Mobile */
+  .lang-switcher-dropdown {
+    position: relative;
+  }
+  .lang-switcher-dropdown .dropdown-toggle {
+    padding: 8px 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 30px;
+    background: var(--secondary);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  .lang-switcher-dropdown .dropdown-menu {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background: var(--secondary);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    display: none;
+    z-index: 10;
+    padding: 10px;
+    box-shadow: var(--shadow);
+  }
+  .lang-switcher-dropdown.show .dropdown-menu {
+    display: block;
+  }
+  .lang-switcher-dropdown .dropdown-menu .lang-switcher {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .lang-switcher-dropdown .dropdown-menu .lang-btn {
+    margin: 0;
+    width: 100%;
+    text-align: left;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: #0A0A0A 1px;
+  }
+
+  /* ---------------- BURGER / SIDEBAR ---------------- */
+  .burger-icon {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+  }
+  .burger-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 280px;
+    height: 100vh;
+    background: var(--secondary);
+    box-shadow: -3px 0 24px rgba(0,0,0,0.1);
+    padding: 80px 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: 0.4s ease;
+    z-index: 2000;
+  }
+  .sidebar.open {
+    right: 0;
+  }
+  .sidebar a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+  .close-sidebar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* ---------------- TOP BLOCK (new) ---------------- */
+  .top-banner {
+    margin-top: 80px; /* Отступ, чтобы не пряталось за header */
+    text-align: center;
+    padding: 30px 5%;
+    background-color: #f0f0f0;
+  }
+  .top-banner h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  .top-banner p {
+    font-size: 1.2rem;
+  }
+
+  /* ---------------- HERO SECTION ---------------- */
+  .hero {
+    padding: 80px 5% 20px;
+    text-align: center;
+    background: linear-gradient(45deg, rgba(197,164,109,0.1) 0%, rgba(255,255,255,1) 100%);
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+  }
+  .hero p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+  }
+
+  /* ---------------- ABOUT US SECTION ---------------- */
+  .about-us {
+    padding: var(--section-padding) 5%;
+    background-color: #fafafa;
+  }
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .about-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    text-align: center;
+  }
+  .about-content p {
+    margin-bottom: 1rem;
+  }
+
+  /* ---------------- CTA BLOCK ---------------- */
+  .cta-block {
+    background: var(--accent);
+    color: var(--secondary);
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem 5%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
+  .cta-block h2 {
+    margin-bottom: 1rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--secondary);
+    color: var(--accent);
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+    margin-top: 1rem;
+  }
+  .cta-btn:hover {
+    background: #e2c694;
+  }
+
+  /* ---------------- WHY US ---------------- */
+  .why-us {
+    padding: var(--section-padding) 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    align-items: center;
+  }
+  .why-us-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .why-us-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+  }
+  .why-us-img {
+    text-align: center;
+  }
+  .why-us-img img {
+    max-width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
+  .why-us-list {
+    list-style: none;
+    margin-left: 1rem;
+  }
+  .why-us-list li {
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 24px;
+  }
+  .why-us-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* ---------------- COUNTERS (STATS) ---------------- */
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: var(--section-padding) 5%;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    text-align: center;
+    min-width: 150px;
+  }
+  .stat-item .counter {
+    font-size: 2.5rem;
+    color: var(--accent);
+    font-weight: 700;
+    display: block;
+  }
+  .stat-item span {
+    font-weight: 500;
+  }
+
+  /* ---------------- SERVICES SECTION ---------------- */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: var(--section-padding) 5%;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 10px auto 0;
+  }
+  .service-card {
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    background: var(--secondary);
+    box-shadow: var(--shadow);
+    transition: 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .service-card:hover {
+    transform: translateY(-10px);
+  }
+  .service-card i {
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  /* ---------------- PACKAGES SECTION ---------------- */
+  .packages {
+    background: #fff;
+    padding: var(--section-padding) 5%;
+  }
+  .packages h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+  }
+  .packages h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin: 10px auto 0;
+  }
+  .packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .package-card {
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s ease;
+  }
+  .package-card:hover {
+    transform: translateY(-5px);
+  }
+  .package-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-transform: uppercase;
+  }
+  .package-card ul {
+    list-style: none;
+    padding-left: 1rem;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+  .package-card ul li {
+    position: relative;
+    margin-bottom: 0.6rem;
+    padding-left: 20px;
+  }
+  .package-card ul li::before {
+    content: "• ";
+    color: var(--accent);
+    position: absolute;
+    left: 0px;
+  }
+  .excluded {
+    text-decoration: line-through;
+    color: #999;
+  }
+
+  /* ---------------- PROJECTS SECTION ---------------- */
+  .projects {
+    padding: var(--section-padding) 5%;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+  .project-item {
+    background: var(--secondary);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--accent);
+  }
+  .project-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  .project-item p {
+    color: #0A0A0A;
+  }
+
+  /* ---------------- VIDEOS SECTION ---------------- */
+  .videos {
+    padding: var(--section-padding) 5%;
+    text-align: center;
+  }
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+  }
+  .video-item iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
+
+  /* ---------------- BRANDS SECTION ---------------- */
+  .brands {
+    padding: var(--section-padding) 5%;
+    text-align: center;
+    overflow: hidden;
+    background: #f9f9f9;
+  }
+  .brands-slider {
+    display: flex;
+    gap: 250px;
+    align-items: center;
+    animation: scrollBrands 3s linear infinite;
+    white-space: nowrap;
+  }
+  .brands-slider img {
+    width: 250px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+  .brands-slider img:hover {
+    opacity: 1;
+  }
+  @keyframes scrollBrands {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* ---------------- TESTIMONIALS ---------------- */
+  .testimonials {
+    padding: var(--section-padding) 5%;
+    background: rgba(0,0,0,0.02);
+  }
+  .testimonial-item {
+    border: 1px solid rgba(0,0,0,0.1);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    max-width: 600px;
+    margin: 1rem auto;
+    position: relative;
+  }
+  .testimonial-item .quote-icon {
+    font-size: 2rem;
+    color: var(--accent);
+    position: absolute;
+    top: 16px;
+    left: 16px;
+  }
+  .testimonial-author {
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+
+  /* ---------------- TEAM SECTION (SLIDER) ---------------- */
+  .team {
+    padding: var(--section-padding) 5%;
+  }
+  .team-slider-container {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 0 5%;
+  }
+  .team-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .team-slide {
+    flex: 0 0 230px;
+    scroll-snap-align: start;
+  }
+  .team-member {
+    text-align: center;
+    transition: 0.3s;
+    background: var(--secondary);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border: 1px solid rgba(0,0,0,0.08);
+    max-width: 220px;
+  }
+  .team-member:hover {
+    transform: translateY(-6px);
+  }
+  .team-member img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  .team-member h4, .team-member h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent);
+    color: var(--secondary);
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .slider-btn.prev {
+    left: 10px;
+  }
+  .slider-btn.next {
+    right: 10px;
+  }
+
+  /* ---------------- CONTACT SECTION ---------------- */
+  .contact {
+    padding: var(--section-padding) 5%;
+    background: rgba(0,0,0,0.02);
+  }
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--secondary);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow);
+  }
+  input, textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: 0.3s ease;
+    font: inherit;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(197,164,109,0.2);
+  }
+  button[type="submit"] {
+    background: var(--accent);
+    color: var(--secondary);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+  button[type="submit"]:hover {
+    background: #b29563;
+  }
+
+  /* ---------------- MAP SECTION ---------------- */
+  .map-section {
+    padding: var(--section-padding) 5%;
+    text-align: center;
+  }
+  .map-section iframe {
+    width: 100%;
+    max-width: 1000px;
+    height: 450px;
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+  }
+
+  /* ---------------- FOOTER ---------------- */
+  footer {
+    padding: 1.5rem 5%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #777;
+    background: var(--secondary);
+    border-top: 1px solid rgba(0,0,0,0.1);
+    position: relative;
+  }
+  .social-links {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .social-links a {
+    color: var(--text);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+  }
+  .social-links a:hover {
+    color: var(--accent);
+  }
+
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent);
+    color: var(--secondary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 9999;
+  }
+  .back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* ---------------- ANIMATIONS ---------------- */
+  .hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s ease;
+  }
+  .show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------------- MEDIA QUERIES ---------------- */
+  @media (max-width: 1024px) {
+    .navbar {
+      display: none;
+    }
+    .burger-icon {
+      display: flex;
+    }
+    /* На десктопе скрываем мобильный блок */
+    .mobile-header {
+      display: none;
+    }
+  }
+  @media (max-width: 768px) {
+
+    .brands-slider {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    animation: scrollBrands 5s linear infinite;
+    white-space: nowrap;
+  }
+
+  .brands-slider img {
+    width: 150px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+
+    .header {
+      padding: 1rem 5%;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-top: 40px;
+    }
+    .why-us {
+      grid-template-columns: 1fr;
+    }
+    /* На мобильных отображаем мобильный блок с dropdown и burger */
+    .mobile-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    /* Скрываем десктопный переключатель языков */
+    .lang-switcher-buttons {
+      display: none;
+    }
+  }
+
+  .packages-grid .hidden {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  /* При попадании в зону видимости */
+  .packages-grid .show {
+    animation: fadeInUp 0.8s ease forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .team {
+    padding: 100px 5%;
+  }
+  .team-slider-container {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 0 5%;
+  }
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #775FE1;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+  .slider-btn.prev {
+    left: 10px;
+  }
+  .slider-btn.next {
+    right: 10px;
+  }
+  .team-slider {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    overflow-x: auto; /* горизонтальная прокрутка */
+    -webkit-overflow-scrolling: touch;
+  }
+  .team-slide {
+    flex: 0 0 auto;
+  }
+  .team-member {
+    width: 260px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+    text-align: center;
+    padding: 1rem;
+    transition: 0.3s;
+  }
+  .team-member:hover {
+    transform: translateY(-5px);
+  }
+  .team-member img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  .team-member h5 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .team-member p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+  .buy-btn {
+    display: inline-block;
+    margin-top: auto;
+    background: #775FE1;
+    color: #fff;
+    border-radius: 30px;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    transition: transform 0.3s ease, background 0.3s ease;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .buy-btn:hover {
+    transform: scale(1.05);
+    background: #5f47c9;
+  }
+  </style>
+
+  <!-- Сайдбар (выезжающее мобильное меню) -->
+  <div class="sidebar" id="sidebar">
+    <button class="close-sidebar" id="closeSidebar">✕</button>
+    <a href="#about-us" onclick="closeSidebar()" data-en="About Us" data-ru="О нас" data-ar="معلومات عنا">About Us</a>
+    <a href="#why-us" onclick="closeSidebar()" data-en="Why Us" data-ru="Почему мы" data-ar="لماذا نحن">Why Us</a>
+    <a href="#services" onclick="closeSidebar()" data-en="Services" data-ru="Услуги" data-ar="الخدمات">Services</a>
+    <a href="#packages" onclick="closeSidebar()" data-en="Packages" data-ru="Пакеты" data-ar="الباقات">Packages</a>
+    <a href="#projects" onclick="closeSidebar()" data-en="Projects" data-ru="Проекты" data-ar="المشاريع">Projects</a>
+    <a href="#team-slider" onclick="closeSidebar()" data-en="Team" data-ru="Команда" data-ar="الفريق">Team</a>
+    <a href="#contact" onclick="closeSidebar()" data-en="Contact" data-ru="Контакты" data-ar="اتصل بنا">Contact</a>
+    <a href="https://www.instagram.com/provent_agency?igsh=cjlmNTVhYjZzMDdr" target="_blank" style="color:#E1306C; font-weight:600;">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero hidden" id="hero">
+    <h1 
+    data-en="We do strategic creativity"
+    data-ar="نقوم بالإبداع الاستراتيجي"
+    data-ru="Мы делаем стратегический креатив"
+  >
+    Мы делаем стратегический креатив
+  </h1>
+  
+  <p
+    data-en="Marketing is the art of understanding the client. We help convey your values to the customer"
+    data-ar="التسويق هو فن فهم العميل. نحن نساعد في إيصال قيمك إلى العميل."
+    data-ru="Маркетинг - это искусство понимать клиента. Мы помогаем донести Ваши ценности до клиента"
+  >
+  Маркетинг - это искусство понимать клиента. Мы помогаем донести Ваши ценности до клиента
+  </p>
+  </section>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block hidden">
+    <h2 data-en="Ready to Boost Your Business?" 
+        data-ar="هل أنت مستعد لدفع عملك نحو الأمام؟"
+        data-ru="Готовы вывести бизнес на новый уровень?">
+      Ready to Boost Your Business?
+    </h2>
+    <p data-en="Get a free consultation and find out how we can help."
+       data-ar="احصل على استشارة مجانية واكتشف كيف يمكننا المساعدة."
+       data-ru="Получите бесплатную консультацию и узнайте, как мы можем помочь.">
+      Get a free consultation and find out how we can help.
+    </p>
+    <a href="#contact" class="cta-btn" data-en="Contact Us" data-ar="اتصل بنا" data-ru="Связаться с нами">Contact Us</a>
+  </div>
+
+  <!-- WHY US SECTION -->
+  <section class="why-us hidden" id="why-us">
+    <div class="why-us-img">
+      <img src="p1.jpg" alt="Why Us Image">
+    </div>
+    <div class="why-us-content">
+      <h2 data-en="Why Choose PROVENT"
+          data-ar="لماذا تختار PROVENT"
+          data-ru="Почему выбирают PROVENT">
+        Why Choose PROVENT
+      </h2>
+
+      <!-- CHANGES START: WHY US LIST -->
+      <ul class="why-us-list">
+        <li>Мы заберем Ваши боли и запросы по продвижению на себя</li>
+        <li>У нас есть отдел контроля качества, которые будут Вам отправлять еженедельные отчеты по лидам и продажам</li>
+        <li>Целая команда креативных профессионалов будут писать стратегию Вашего проекта или личного бренда, наполняя её креативом</li>
+        <li>У нас разработаны и проверенные пакеты, закрывающие Ваши запросы по Вашему проекту</li>
+      </ul>
+      <!-- CHANGES END: WHY US LIST -->
+
+    </div>
+  </section>
+
+  <!-- COUNTERS (STATS) -->
+  <section class="stats hidden">
+    <div class="stat-item">
+      <span class="counter" data-target="150">0</span>
+      <span data-en="Projects" data-ar="مشروع" data-ru="Проектов">Projects</span>
+    </div>
+    <div class="stat-item">
+      <span class="counter" data-target="50">0</span>
+      <span data-en="Happy Clients" data-ar="عملاء سعداء" data-ru="Довольных клиентов">Happy Clients</span>
+    </div>
+    <div class="stat-item">
+      <span class="counter" data-target="10">0</span>
+      <span data-en="Countries" data-ar="دول" data-ru="Стран">Countries</span>
+    </div>
+    <div class="stat-item">
+      <span class="counter" data-target="5">0</span>
+      <span data-en="Years of Experience" data-ar="سنوات من الخبرة" data-ru="Лет опыта">Years of Experience</span>
+    </div>
+  </section>
+
+  <!-- VIDEOS SECTION -->
+  <section class="videos hidden" id="videos">
+    <h2 class="section-title" data-en="Our Videos" data-ar="فيديوهاتنا" data-ru="Наши видео">
+      Видео
+    </h2>
+    <div class="videos-grid">
+      <div class="video-item hidden">
+        <iframe src="video/gogo.MP4"
+                frameborder="0"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS SECTION (Trusted By) -->
+  <section class="brands hidden" id="brands">
+    <h2 class="section-title" data-en="Trusted By" data-ar="يثق بنا" data-ru="Нам доверяют">
+      Нам доверяют
+    </h2>
+    <div class="brands-slider">
+      <img src="7.png" alt="Brand 1">
+      <img src="8.png" alt="Brand 1">
+      <img src="bag.PNG" alt="Brand 1">
+      <img src="alt.PNG" alt="Brand 1">
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION
+       (Оставляем как есть, если не нужно менять)
+  <section class="services-grid" id="services">
+    <h2 class="section-title hidden" data-en="Our Services" data-ru="Наши Услуги" data-ar="خدماتنا">Our Services</h2>
+    <div class="service-card hidden">
+      <i class="fas fa-rocket fa-2x"></i>
+      <h3>Digital Strategy</h3>
+      <p>Comprehensive market analysis and growth planning</p>
+    </div>
+    <div class="service-card hidden">
+      <i class="fas fa-chart-line fa-2x"></i>
+      <h3>SMM & PR</h3>
+      <p>Social Media Management, Influencer Outreach, and Brand Building</p>
+    </div>
+    <div class="service-card hidden">
+      <i class="fas fa-chart-pie fa-2x"></i>
+      <h3>Analytics & AI</h3>
+      <p>Data-driven insights and chatbot solutions for automated support</p>
+    </div>
+  </section>
+  -->
+
+  <!-- CHANGES START: PACKAGES SECTION -->
+  <section class="packages hidden" id="packages">
+    <h2 data-en="Our Packages" data-ru="Наши пакеты" data-ar="باقاتنا">
+      Наши пакеты
+    </h2>
+    <div class="packages-grid">
+      <!-- SMM Пакет -->
+      <div class="package-card hidden" id="smm-package" onclick="activatePackage('smm')">
+        <h3>SMM Packet</h3>
+        <ul>
+          <li>SMM Стратегия &amp; Контент план</li>
+          <li>Продакшн /Post/REELS/Сторителлинг</li>
+          <li>Дизайн</li>
+          <li>Таргет (креатив и лидогенерация)</li>
+          <li>Аналитика (еженедельная отчетность)</li>
+          <!-- Вычеркнутые для SMM -->
+          <li class="excluded">Продюсирования</li>
+          <li class="excluded">PR стратегия и медиаплан</li>
+          <li class="excluded">Коллаборация с блоггерами (лидеры мнений и партнерства)</li>
+          <li class="excluded">Продвижения личного бренда (Instagram, Tik-Tok, YouTube)</li>
+          <li class="excluded">Запуск продукта</li>
+          <li class="excluded">Анализ (ЦА, рынок, бейнчмарк, SWOT)</li>
+          <li class="excluded">Маркетинговая стратегия (позиционирование, брендинг, КПК)</li>
+          <li class="excluded">Построения отдела продаж</li>
+          <li class="excluded">Внедрения CRM + IP телефония</li>
+          <li class="excluded">Внедрения AI менеджера, чат-бот, воронки</li>
+        </ul>
+        <a href="https://wa.me/971553377075?text=Hello!%20I%20want%20to%20purchase%20the%20SMM%20package."
+           target="_blank"
+           class="buy-btn">
+          Купить
+        </a>
+      </div>
+
+      <!-- PR Пакет -->
+      <div class="package-card hidden" id="pr-package" onclick="activatePackage('pr')">
+        <h3>PR Packet</h3>
+        <ul>
+          <!-- В PR пакете SMM-блоки тоже есть, но, как правило, основные PR-услуги -->
+          <li>SMM Стратегия &amp; Контент план</li>
+          <li>Продакшн /Post/REELS/Сторителлинг</li>
+          <li>Дизайн</li>
+          <li>Таргет (креатив и лидогенерация)</li>
+          <li>Аналитика (еженедельная отчетность)</li>
+          <!-- Подключаем продюсирование и т.д. (не вычеркнуты) -->
+          <li>Продюсирования</li>
+          <li>PR стратегия и медиаплан</li>
+          <li>Коллаборация с блоггерами (лидеры мнений и партнерства)</li>
+          <li>Продвижения личного бренда (Instagram, Tik-Tok, YouTube)</li>
+          <li>Запуск продукта</li>
+          <!-- Вычеркнутые для PR -->
+          <li class="excluded">Анализ (ЦА, рынок, бейнчмарк, SWOT)</li>
+          <li class="excluded">Маркетинговая стратегия (позиционирование, брендинг, КПК)</li>
+          <li class="excluded">Построения отдела продаж</li>
+          <li class="excluded">Внедрения CRM + IP телефония</li>
+          <li class="excluded">Внедрения AI менеджера, чат-бот, воронки</li>
+        </ul>
+        <a href="https://wa.me/971553377075?text=Hello!%20I%20want%20to%20purchase%20the%20PR%20package."
+           target="_blank"
+           class="buy-btn">
+          Купить
+        </a>
+      </div>
+
+      <!-- VIP Пакет -->
+      <div class="package-card hidden" id="vip-package" onclick="activatePackage('vip')">
+        <h3>VIP Packet</h3>
+        <ul>
+          <!-- Всё включено, ничего не вычеркиваем -->
+          <li>SMM Стратегия &amp; Контент план</li>
+          <li>Продакшн /Post/REELS/Сторителлинг</li>
+          <li>Дизайн</li>
+          <li>Таргет (креатив и лидогенерация)</li>
+          <li>Аналитика (еженедельная отчетность)</li>
+          <li>Продюсирования</li>
+          <li>PR стратегия и медиаплан</li>
+          <li>Коллаборация с блоггерами (лидеры мнений и партнерства)</li>
+          <li>Продвижения личного бренда (Instagram, Tik-Tok, YouTube)</li>
+          <li>Запуск продукта</li>
+          <li>Анализ (ЦА, рынок, бейнчмарк, SWOT)</li>
+          <li>Маркетинговая стратегия (позиционирование, брендинг, КПК)</li>
+          <li>Построения отдела продаж</li>
+          <li>Внедрения CRM + IP телефония</li>
+          <li>Внедрения AI менеджера, чат-бот, воронки</li>
+        </ul>
+        <a href="https://wa.me/971553377075?text=Hello!%20I%20want%20to%20purchase%20the%20VIP%20package."
+           target="_blank"
+           class="buy-btn">
+          Купить
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- CHANGES END: PACKAGES SECTION -->
+
+  <!-- PROJECTS SECTION -->
+  <section class="projects" id="projects">
+    <h2 class="section-title hidden" data-en="Our Projects" data-ar="مشاريعنا" data-ru="Наши проекты">
+      Наши проекты
+    </h2>
+    <div class="projects-grid">
+      <div class="project-item hidden">
+        <h3 data-en="KIT ISTANBUL" data-ar="كيت اسطنبول" data-ru="KIT ISTANBUL">KIT ISTANBUL</h3>
+        <p>Инновационный городской проект в Стамбуле</p>
+      </div>
+      <div class="project-item hidden">
+        <h3>KIT ASTANA</h3>
+        <p>Современный дизайн и развитие в Астане</p>
+      </div>
+      <div class="project-item hidden">
+        <h3>KIT ALMATY</h3>
+        <p>Передовой проект в Алматы</p>
+      </div>
+      <div class="project-item hidden">
+        <h3>BEMINE Properties</h3>
+        <p>Качественные решения в сфере недвижимости</p>
+      </div>
+      <div class="project-item hidden">
+        <h3>AYKUN Hotels</h3>
+        <p>Рекламная кампания для люксового отеля</p>
+      </div>
+      <div class="project-item hidden">
+        <h3>Energetika Alemi</h3>
+        <p>SMM и PR для компании в сфере возобновляемой энергии</p>
+      </div>
+      <div class="project-item hidden">
+        <h3>NUR-ALIKHAN Academy</h3>
+        <p>Образовательная платформа с ИИ-аналитикой</p>
+      </div>
+      <div class="project-item hidden">
+        <h3>QAZAN PLOV Restaurant</h3>
+        <p>Развитие бренда и соцсетей</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials hidden" id="testimonials">
+    <h2 class="section-title" data-en="Testimonials" data-ar="آراء العملاء" data-ru="Отзывы">
+      Testimonials
+    </h2>
+    <div class="testimonial-item hidden">
+      <i class="fa-solid fa-quote-left quote-icon"></i>
+      <p>PROVENT helped our hotel chain significantly boost online visibility and direct bookings.</p>
+      <p class="testimonial-author">– Zhannur, AYKUN Hotels</p>
+    </div>
+    <div class="testimonial-item hidden">
+      <i class="fa-solid fa-quote-left quote-icon"></i>
+      <p>Their AI chatbot solutions saved us time and allowed better engagement with our online audience.</p>
+      <p class="testimonial-author">– Aigerim, Energetika Alemi</p>
+    </div>
+  </section>
+
+  <!-- ABOUT US SECTION -->
+  <section class="about-us hidden" id="about-us">
+    <div class="about-content">
+      <h2 data-en="About Us"
+          data-ru="О нас"
+          data-ar="معلومات عنا"
+      >
+        О нас
+      </h2>
+      <p data-en="We are a team of professionals..."
+         data-ar="نحن فريق من المحترفين..."
+         data-ru="Мы — команда профессионалов..."
+      >
+        Мы — команда профессионалов, которая создаёт и воплощает маркетинговые стратегии...
+      </p>
+    </div>
+  </section>
+
+  <!-- TEAM SECTION SLIDER -->
+  <section class="team" id="team-slider">
+    <h2 class="section-title hidden" data-en="Our Team" data-ar="فريقنا" data-ru="Наша команда">
+      Наша команда
+    </h2>
+    <div class="team-slider-container">
+      <button class="slider-btn prev">&#10094;</button>
+      <div class="team-slider">
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/arman.png" alt="Kassenov Arman">
+            <h5>Кассенов Арман – Основатель</h5>
+            <p>Отвечает за формирование видения и стратегии агентства</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/yernur.png" alt="Yernur Eleu">
+            <h5>Ернур Елеу – CEO</h5>
+            <p>Отвечает за формирование видения и стратегии агентства</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/aza.png" alt="Azamat M.">
+            <h5>Азамат Муратович – Проектный менеджер</h5>
+            <p>Руководит планированием проектов и координацией команды</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/gulmira.png" alt="Gulmira">
+            <h5>Гульмира – Эксперт по отделу продаж</h5>
+            <p>Формирует и оптимизирует отдел продаж</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/alish.png" alt="Aliuly Alisher">
+            <h5>Алиулы Алишер – Контент-креатор / Видеограф</h5>
+            <p>Создаёт креативный видео- и соцмедиа-контент</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/elnar.png" alt="Elnar Ershat">
+            <h5>Елнар Ершат – Видеограф / Контент-креатор</h5>
+            <p>Отвечает за визуальный сторителлинг и видеопроизводство</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/shyn.png" alt="Shyngys">
+            <h5>ШЫНГЫС – Специалист по AI / IT</h5>
+            <p>Внедряет AI и чат-боты для автоматизации бизнеса</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/batyr.png" alt="Batyrkhan Bakbergenuly">
+            <h5>Батырхан Бакбергенулы – Контент-продюсер</h5>
+            <p>Курирует производство высококачественного медиаконтента</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/fariza.png" alt="Fariza Ametkyzy">
+            <h5>Фариза Аметкызы – SMM-специалист / Мобилограф</h5>
+            <p>Разрабатывает SMM-стратегии и мобильный контент</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/aru.png" alt="Batyrbek Aruzhan">
+            <h5>Батырбек Аружан – Маркетолог</h5>
+            <p>Занимается ростом продаж через маркетинговые кампании</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/artur.png" alt="Artur Ismailov">
+            <h5>Артур Исмаилов – Продюсер</h5>
+            <p>Организует и управляет всеми этапами продакшена</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/akerke.png" alt="Akerke – Head of Quality and Control Dept">
+            <h5>Акерке – Руководитель отдела контроля и качества</h5>
+            <p>Отвечает за соблюдение требований и операционные стандарты</p>
+          </div>
+        </div>
+        <div class="team-slide">
+          <div class="team-member">
+            <img src="team/ainura.png" alt="Ainura – Targeting Specialist / Designer">
+            <h5>Айнура – Таргетолог / Дизайнер</h5>
+            <p>Оптимизирует рекламные кампании и создает дизайн-решения</p>
+          </div>
+        </div>
+      </div>
+      <button class="slider-btn next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact" id="contact">
+    <h2 class="section-title" data-en="Get in Touch" data-ar="تواصل معنا" data-ru="Свяжитесь с нами">
+      Get in Touch
+    </h2>
+    <form class="contact-form" id="contactForm">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="tel" name="phone" placeholder="Phone Number" />
+      <textarea name="message" placeholder="Message" rows="5"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="map-section hidden" id="map">
+    <h2 class="section-title" data-en="Find Us" data-ar="أين تجدنا" data-ru="Как нас найти">
+      Find Us
+    </h2>
+    <a href="https://go.2gis.com/FoDUc">
+      <div class="two" style="width: 50%; margin: 0 auto;">
+        <img style="border-radius: 25px; width: 50%;" src="https://play-lh.googleusercontent.com/55huczUZ05ruaVynURUNqzgTu0qXLF-SPQZKtE9KA6_BavI-g0NgXz1NR98n5xX33HwD" alt="">
+      </div>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="social-links">
+      <a href="https://www.instagram.com/provent_agency?igsh=cjlmNTVhYjZzMDdr" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/+971553377075" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:qassenovart@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    </div>
+    © 2025 PROVENT Agency · All Rights Reserved
+  </footer>
+
+  <!-- BACK TO TOP BUTTON -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fa-solid fa-arrow-up"></i>
+  </div>
+
+  <!-- CHANGES START: DYNAMIC SCRIPTS -->
+<script>
+  // === Language Switch Function ===
+  function setLang(lang) {
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = lang;
+
+    // Desktop buttons
+    document.querySelectorAll('.lang-switcher-buttons .lang-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.textContent.trim().toUpperCase() === lang.toUpperCase()) {
+        btn.classList.add('active');
+      }
+      if (lang === 'ar' && btn.textContent.includes('عربي')) {
+        btn.classList.add('active');
+      }
+    });
+
+    // Mobile dropdown
+    const dropdownToggle = document.querySelector('.lang-switcher-dropdown .dropdown-toggle');
+    if (dropdownToggle) {
+      dropdownToggle.textContent = (lang === 'ar') ? 'عربي' : lang.toUpperCase();
+    }
+  }
+  function toggleDropdown() {
+    document.querySelector('.lang-switcher-dropdown').classList.toggle('show');
+  }
+  const ddToggle = document.querySelector('.dropdown-toggle');
+  if(ddToggle){
+    ddToggle.addEventListener('click', function(){
+      toggleDropdown();
+    });
+  }
+
+  // === Burger Menu Logic ===
+  const burgerBtn = document.getElementById('burgerBtn');
+  const sidebar = document.getElementById('sidebar');
+  const closeSidebarBtn = document.getElementById('closeSidebar');
+  if(burgerBtn){
+    burgerBtn.addEventListener('click', () => {
+      sidebar.classList.add('open');
+    });
+  }
+  if(closeSidebarBtn){
+    closeSidebarBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+  }
+
+  // === Intersection Observer for scroll animations ===
+  const hiddenElems = document.querySelectorAll('.hidden');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.1 });
+  hiddenElems.forEach(el => observer.observe(el));
+
+  // === Counters (Stats) ===
+  const counters = document.querySelectorAll('.counter');
+  let countersStarted = false;
+  function runCounters() {
+    counters.forEach(counter => {
+      const target = +counter.getAttribute('data-target');
+      const step = target / 100;
+      let current = 0;
+      const updateCounter = () => {
+        if (current < target) {
+          current += step;
+          counter.textContent = Math.ceil(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      };
+      updateCounter();
+    });
+  }
+  const statsSection = document.querySelector('.stats');
+  if(statsSection){
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+          runCounters();
+        }
+      });
+    }, { threshold: 0.3 });
+    statsObserver.observe(statsSection);
+  }
+
+  // === Back to Top ===
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // === Team Slider Navigation ===
+  document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.querySelector(".team-slider");
+    if(!slider) return;
+    const btnPrev = document.querySelector(".slider-btn.prev");
+    const btnNext = document.querySelector(".slider-btn.next");
+
+    btnPrev.addEventListener("click", function() {
+      slider.scrollBy({
+        left: -300,
+        behavior: "smooth"
+      });
+    });
+    btnNext.addEventListener("click", function() {
+      slider.scrollBy({
+        left: 300,
+        behavior: "smooth"
+      });
+    });
+  });
+
+  // === Form AJAX Submission ===
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var formData = new FormData(e.target);
+      fetch("https://script.google.com/macros/s/AKfycbyX9JWzQ1KONDY9QXyLvMk937WwmYaBMDIQoq-FlV_ZmaVAb91QjLLs3jDjNHNO7hYn/exec", {
+        method: "POST",
+        body: formData
+      })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        if(data.status === "success") {
+          alert("Форма успешно записана");
+          e.target.reset();
+        } else {
+          alert("Ошибка: " + data.message);
+        }
+      })
+      .catch(function(error) {
+        alert("Ошибка отправки формы: " + error);
+      });
+    });
+  }
+
+  // === Default Language ===
+  window.addEventListener('DOMContentLoaded', () => {
+    setLang('en');
+  });
+
+  // === PACKAGES DYNAMIC TOGGLING ===
+  // При клике на карточку пакета — показываем нужное содержимое без зачёркиваний или с ними.
+  // Но здесь всё уже визуально есть. Если хотите что-то особое — можем анимировать/выделять и т.п.
+  function activatePackage(type) {
+    // Убираем "active" у всех
+    const cards = document.querySelectorAll('.package-card');
+    cards.forEach(card => {
+      card.style.borderColor = 'rgba(0,0,0,0.08)';
+      card.style.transform = 'translateY(0)';
+    });
+    // Подсветим выбранный
+    const current = document.getElementById(type + '-package');
+    if(current){
+      current.style.borderColor = '#775FE1';
+      current.style.transform = 'translateY(-5px)';
+    }
+  }
+</script>
+<!-- CHANGES END: DYNAMIC SCRIPTS -->
+</body>
+</html>

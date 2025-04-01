@@ -434,7 +434,7 @@
     margin-bottom: 1rem;
   }
 
-  /* ---------------- PACKAGES SECTION (new) ---------------- */
+  /* ---------------- PACKAGES SECTION ---------------- */
   .packages {
     background: #fff;
     padding: var(--section-padding) 5%;
@@ -461,14 +461,18 @@
     margin-top: 30px;
   }
   .package-card {
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s ease;
+  }
+  .package-card:hover {
+    transform: translateY(-5px);
+  }
   .package-card h3 {
     margin-bottom: 1rem;
     color: var(--primary);
@@ -478,16 +482,22 @@
     list-style: none;
     padding-left: 1rem;
     color: #444;
+    margin-bottom: 1rem;
   }
   .package-card ul li {
     position: relative;
     margin-bottom: 0.6rem;
+    padding-left: 20px;
   }
   .package-card ul li::before {
     content: "• ";
     color: var(--accent);
     position: absolute;
-    left: -10px;
+    left: 0px;
+  }
+  .excluded {
+    text-decoration: line-through;
+    color: #999;
   }
 
   /* ---------------- PROJECTS SECTION ---------------- */
@@ -524,12 +534,12 @@
   }
   .videos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 30px;
     margin-top: 20px;
   }
   .video-item iframe {
-    width: 100%;
+    width: 90%;
     height: 250px;
     border: none;
     border-radius: var(--border-radius);
@@ -545,13 +555,13 @@
   }
   .brands-slider {
     display: flex;
-    gap: 40px;
+    gap: 250px;
     align-items: center;
     animation: scrollBrands 3s linear infinite;
     white-space: nowrap;
   }
   .brands-slider img {
-    width: 150px;
+    width: 250px;
     opacity: 0.8;
     transition: opacity 0.3s;
   }
@@ -790,6 +800,21 @@
     }
   }
   @media (max-width: 768px) {
+
+    .brands-slider {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    animation: scrollBrands 5s linear infinite;
+    white-space: nowrap;
+  }
+
+  .brands-slider img {
+    width: 150px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+
     .header {
       padding: 1rem 5%;
     }
@@ -812,7 +837,6 @@
     }
   }
 
-
   .packages-grid .hidden {
     opacity: 0;
     transform: translateY(30px);
@@ -820,10 +844,8 @@
 
   /* При попадании в зону видимости */
   .packages-grid .show {
-    /* Используем анимацию, прописанную ниже */
     animation: fadeInUp 0.8s ease forwards;
   }
-
   @keyframes fadeInUp {
     to {
       opacity: 1;
@@ -831,123 +853,100 @@
     }
   }
 
-
   .team {
-  padding: 100px 5%;
-}
-
-/* Контейнер слайдера */
-.team-slider-container {
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  max-width: 1300px;
-  padding: 0 5%;
-}
-
-/* Кнопки "влево/вправо" */
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #775FE1;
-  color: #FFFFFF;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 4px;
-  font-size: 1.2rem;
-  z-index: 2;
-}
-.slider-btn.prev {
-  left: 10px;
-}
-.slider-btn.next {
-  right: 10px;
-}
-
-/* Горизонтальная "лента" */
-.team-slider {
-  display: flex;
-  gap: 20px;
-  padding: 20px 0;
-  scroll-behavior: smooth;
-  overflow-x: auto; /* горизонтальная прокрутка */
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Каждый "слайд" */
-.team-slide {
-  flex: 0 0 auto; /* фиксированная ширина слайда */
-}
-
-/* Карточка участника */
-.team-member {
-  width: 260px;              /* фиксированная ширина */
-  height: 380px;             /* фиксированная высота (можно min-height) */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* чтобы контент располагался от верха */
-  background: #fff;
-  border-radius: 16px;
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.05);
-  text-align: center;
-  padding: 1rem;
-  transition: 0.3s;
-}
-
-/* При наведении - лёгкий подъём */
-.team-member:hover {
-  transform: translateY(-5px);
-}
-
-/* Фото делаем ровным у всех */
-.team-member img {
-  width: 120px;      
-  height: 120px;
-  object-fit: cover; /* "обрезает" по центру, сохраняя пропорции */
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-/* Заголовок (имя и должность) */
-.team-member h5 {
-  font-size: 1.05rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-/* Описание / обязанности */
-.team-member p {
-  font-size: 0.9rem;
-  line-height: 1.4;
-  margin: 0 auto; /* центрируем текст */
-  max-width: 90%; /* чтоб не прилипал к краям */
-}
-
-
-.buy-btn {
-  display: inline-block;
-  margin-top: auto; /* ключ! */
-  background: #775FE1;
-  color: #fff;
-  border-radius: 30px;
-  padding: 0.8rem 1.5rem;
-  text-decoration: none;
-  text-align: center;
-  font-weight: 600;
-  transition: transform 0.3s ease, background 0.3s ease;
-  margin-left: auto;
-  margin-right: auto;
-}
+    padding: 100px 5%;
+  }
+  .team-slider-container {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 0 5%;
+  }
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #775FE1;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    z-index: 2;
+  }
+  .slider-btn.prev {
+    left: 10px;
+  }
+  .slider-btn.next {
+    right: 10px;
+  }
+  .team-slider {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    scroll-behavior: smooth;
+    overflow-x: auto; /* горизонтальная прокрутка */
+    -webkit-overflow-scrolling: touch;
+  }
+  .team-slide {
+    flex: 0 0 auto;
+  }
+  .team-member {
+    width: 260px;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+    text-align: center;
+    padding: 1rem;
+    transition: 0.3s;
+  }
+  .team-member:hover {
+    transform: translateY(-5px);
+  }
+  .team-member img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  .team-member h5 {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .team-member p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+  .buy-btn {
+    display: inline-block;
+    margin-top: auto;
+    background: #775FE1;
+    color: #fff;
+    border-radius: 30px;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    transition: transform 0.3s ease, background 0.3s ease;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .buy-btn:hover {
     transform: scale(1.05);
-    background: #5f47c9; /* чуть темнее при наведении */
+    background: #5f47c9;
   }
-
-
   </style>
 
   <!-- Сайдбар (выезжающее мобильное меню) -->
@@ -975,17 +974,14 @@
     Мы делаем стратегический креатив
   </h1>
   
-  <!-- Подзаголовок/абзац -->
   <p
-    data-en="Marketing is the art of understanding the client. We help convey your values to the customer    "
+    data-en="Marketing is the art of understanding the client. We help convey your values to the customer"
     data-ar="التسويق هو فن فهم العميل. نحن نساعد في إيصال قيمك إلى العميل."
     data-ru="Маркетинг - это искусство понимать клиента. Мы помогаем донести Ваши ценности до клиента"
   >
   Маркетинг - это искусство понимать клиента. Мы помогаем донести Ваши ценности до клиента
   </p>
   </section>
-
-
 
   <!-- CTA BLOCK -->
   <div class="cta-block hidden">
@@ -1013,28 +1009,32 @@
           data-ru="Почему выбирают PROVENT">
         Why Choose PROVENT
       </h2>
+
+      <!-- CHANGES START: WHY US LIST -->
       <ul class="why-us-list">
-        <li data-en="Over 5 years of global marketing experience"
-            data-ar="أكثر من 5 سنوات من الخبرة العالمية في التسويق"
-            data-ru="Более 5 лет международного опыта в маркетинге">
-          Over 5 years of global marketing experience
+        <li data-en="We take on your pain points and promotion needs."
+            data-ar="نحن نتحمل عنك المشاكل والطلبات المتعلقة بالترويج."
+            data-ru="Мы заберем Ваши боли и запросы по продвижению на себя">
+          Мы заберем Ваши боли и запросы по продвижению на себя
         </li>
-        <li data-en="Team of AI, SMM, and PR experts"
-            data-ar="فريق من خبراء الذكاء الاصطناعي والتسويق الاجتماعي والعلاقات العامة"
-            data-ru="Команда специалистов по ИИ, SMM и PR">
-          Team of AI, SMM, and PR experts
+        <li data-en="We have a quality control department that will send you weekly reports on leads and sales."
+            data-ar="لدينا قسم لمراقبة الجودة سيرسل لك تقارير أسبوعية عن العملاء والمبيعات."
+            data-ru="У нас есть отдел контроля качества, которые будут Вам отправлять еженедельные отчеты по лидам и продажам">
+          У нас есть отдел контроля качества, которые будут Вам отправлять еженедельные отчеты по лидам и продажам
         </li>
-        <li data-en="Proven track record with top brands"
-            data-ar="سجل حافل بالنجاح مع أبرز العلامات التجارية"
-            data-ru="Успешный опыт работы с ведущими брендами">
-          Proven track record with top brands
+        <li data-en="A team of creative professionals will develop your project or personal brand strategy filled with creativity."
+            data-ar="فريق كامل من المحترفين المبدعين سيضعون استراتيجية لمشروعك أو علامتك الشخصية مليئة بالإبداع."
+            data-ru="Целая команда креативных профессионалов будут писать стратегию Вашего проекта или личного бренда, наполняя её креативом">
+          Целая команда креативных профессионалов будут писать стратегию Вашего проекта или личного бренда, наполняя её креативом
         </li>
-        <li data-en="Data-driven, innovative solutions"
-            data-ar="حلول مبتكرة قائمة على البيانات"
-            data-ru="Инновационные решения на основе данных">
-          Data-driven, innovative solutions
+        <li data-en="We offer proven packages tailored to your project's needs."
+            data-ar="لدينا باقات مجربة ومصممة لتلبية احتياجات مشروعك."
+            data-ru="У нас разработаны и проверенные пакеты, закрывающие Ваши запросы по Вашему проекту">
+          У нас разработаны и проверенные пакеты, закрывающие Ваши запросы по Вашему проекту
         </li>
       </ul>
+      <!-- CHANGES END: WHY US LIST -->
+
     </div>
   </section>
 
@@ -1042,7 +1042,7 @@
   <section class="stats hidden">
     <div class="stat-item">
       <span class="counter" data-target="150">0</span>
-      <span data-en="Projects" data-ar="مشروع" data-ru="Проектов">Projects</span>
+      <span data-en="Projects" data-ar="مشاريع" data-ru="Проектов">Projects</span>
     </div>
     <div class="stat-item">
       <span class="counter" data-target="50">0</span>
@@ -1057,7 +1057,6 @@
       <span data-en="Years of Experience" data-ar="سنوات من الخبرة" data-ru="Лет опыта">Years of Experience</span>
     </div>
   </section>
-
   <!-- VIDEOS SECTION -->
   <section class="videos hidden" id="videos">
     <h2 class="section-title" data-en="Our Videos" data-ar="فيديوهاتنا" data-ru="Наши видео">
@@ -1065,7 +1064,35 @@
     </h2>
     <div class="videos-grid">
       <div class="video-item hidden">
-        <iframe src="video/gogo.MP4"
+        <iframe src="video/IMG_7028.mp4"
+                frameborder="0"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-item hidden">
+        <iframe src="video/IMG_7022.mp4"
+                frameborder="0"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-item hidden">
+        <iframe src="video/IMG_7023.mp4"
+                frameborder="0"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-item hidden">
+        <iframe src="video/IMG_7025.mp4"
+                frameborder="0"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-item hidden">
+        <iframe src="video/IMG_7027.mp4"
                 frameborder="0"
                 allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
@@ -1088,660 +1115,343 @@
   </section>
 
   <!-- SERVICES SECTION
+       (Оставляем как есть, если не нужно менять)
   <section class="services-grid" id="services">
     <h2 class="section-title hidden" data-en="Our Services" data-ru="Наши Услуги" data-ar="خدماتنا">Our Services</h2>
     <div class="service-card hidden">
       <i class="fas fa-rocket fa-2x"></i>
-      <h3 data-en="Digital Strategy"
-          data-ar="استراتيجية رقمية"
-          data-ru="Цифровая стратегия">
-        Digital Strategy
-      </h3>
-      <p data-en="Comprehensive market analysis and growth planning"
-         data-ar="تحليل سوق شامل وتخطيط النمو"
-         data-ru="Комплексный анализ рынка и планирование роста">
-        Comprehensive market analysis and growth planning
-      </p>
+      <h3>Digital Strategy</h3>
+      <p>Comprehensive market analysis and growth planning</p>
     </div>
     <div class="service-card hidden">
       <i class="fas fa-chart-line fa-2x"></i>
-      <h3 data-en="SMM & PR"
-          data-ar="التسويق عبر الشبكات الاجتماعية والعلاقات العامة"
-          data-ru="SMM и PR">
-        SMM & PR
-      </h3>
-      <p data-en="Social Media Management, Influencer Outreach, and Brand Building"
-         data-ar="إدارة وسائل التواصل الاجتماعي، التواصل مع المؤثرين، وبناء العلامة التجارية"
-         data-ru="Управление соцсетями, работа с блогерами и развитие бренда">
-        Social Media Management, Influencer Outreach, and Brand Building
-      </p>
+      <h3>SMM & PR</h3>
+      <p>Social Media Management, Influencer Outreach, and Brand Building</p>
     </div>
     <div class="service-card hidden">
       <i class="fas fa-chart-pie fa-2x"></i>
-      <h3 data-en="Analytics & AI"
-          data-ar="التحليلات والذكاء الاصطناعي"
-          data-ru="Аналитика и ИИ">
-        Analytics & AI
-      </h3>
-      <p data-en="Data-driven insights and chatbot solutions for automated support"
-         data-ar="رؤى تعتمد على البيانات وحلول الروبوتات للمحادثة للدعم الآلي"
-         data-ru="Решения на базе данных и чат-боты для автоматизации поддержки">
-        Data-driven insights and chatbot solutions for automated support
-      </p>
+      <h3>Analytics & AI</h3>
+      <p>Data-driven insights and chatbot solutions for automated support</p>
     </div>
-  </section> -->
+  </section>
+  -->
 
-  <!-- PACKAGES SECTION -->
-<section class="packages hidden" id="packages">
-  <h2 
-    data-en="Our Packages" 
-    data-ru="Наши пакеты" 
-    data-ar="باقاتنا"
-  >
-    Наши пакеты
-  </h2>
-
-  <div class="packages-grid">
-    <!-- SMM-пакет -->
-    <div class="package-card hidden">
-      <h3
-        data-en="SMM Package"
-        data-ru="SMM-пакет"
-        data-ar="حزمة SMM"
-      >
-        SMM-пакет
-      </h3>
-      <ul>
-        <li 
-          data-en="Diagnostics"
-          data-ru="Диагностика"
-          data-ar="التشخيص"
-        >
-          Диагностика
-        </li>
-        <li 
-          data-en="Content plan creation"
-          data-ru="Составление контент плана"
-          data-ar="إعداد خطة المحتوى"
-        >
-          Составление контент плана
-        </li>
-        <li 
-          data-en="Photo, video, Reels, copywriting, storytelling"
-          data-ru="Фото, видео, рилс, копирайтинг, сторителлинг"
-          data-ar="التصوير الفوتوغرافي والفيديو والريلز وكتابة المحتوى وسرد القصص"
-        >
-          Фото, видео, рилс, копирайтинг, сторителлинг
-        </li>
-        <li 
-          data-en="Design (brand style, profile setup)"
-          data-ru="Дизайн (фирменный стиль, оформление профиля)"
-          data-ar="التصميم (الهوية البصرية، إعداد الملف الشخصي)"
-        >
-          Дизайн (фирменный стиль, оформление профиля)
-        </li>
-        <li 
-          data-en="Lead generation"
-          data-ru="Лидогенерация"
-          data-ar="توليد العملاء المحتملين"
-        >
-          Лидогенерация
-        </li>
-        <li 
-          data-en="Creative selling videos"
-          data-ru="Креативные продающие видео"
-          data-ar="فيديوهات إبداعية للبيع"
-        >
-          Креативные продающие видео
-        </li>
-        <li 
-          data-en="Targeted advertising — launch, setup, optimization"
-          data-ru="Таргетированная реклама — запуск, настройка, оптимизация"
-          data-ar="الإعلان الموجّه: الإطلاق والإعداد والتحسين"
-        >
-          Таргетированная реклама — запуск, настройка, оптимизация
-        </li>
-      </ul>
-      <!-- Кнопка "Купить" с переходом в WhatsApp -->
-      <a 
-        href="https://wa.me/971553377075?text=Hello!%20I%20want%20to%20purchase%20the%20SMM%20package."
-        target="_blank" 
-        class="buy-btn"
-        data-en="Buy Now"
-        data-ru="Купить"
-        data-ar="اشتري الآن"
-      >
-        Купить
-      </a>
+  <!-- CHANGES START: PACKAGES SECTION -->
+  <section class="packages hidden" id="packages">
+    <h2 data-en="Our Packages" data-ru="Наши пакеты" data-ar="باقاتنا">
+      Наши пакеты
+    </h2>
+    <div class="packages-grid">
+      <!-- SMM Пакет -->
+      <div class="package-card hidden" id="smm-package" onclick="activatePackage('smm')">
+        <h3>SMM Packet</h3>
+        <ul>
+          <li data-en="SMM Strategy & Content Plan" data-ru="SMM Стратегия & Контент план" data-ar="استراتيجية SMM وخطة المحتوى">SMM Стратегия & Контент план</li>
+          <li data-en="Production / Post / REELS / Storytelling" data-ru="Продакшн /Post/REELS/Сторителлинг" data-ar="الإنتاج / المنشورات / الريلز / سرد القصص">Продакшн /Post/REELS/Сторителлинг</li>
+          <li data-en="Design" data-ru="Дизайн" data-ar="تصميم">Дизайн</li>
+          <li data-en="Targeting (Creative and Lead Generation)" data-ru="Таргет (креатив и лидогенерация)" data-ar="الاستهداف (الإبداع وتوليد العملاء المحتملين)">Таргет (креатив и лидогенерация)</li>
+          <li data-en="Analytics (weekly reports)" data-ru="Аналитика (еженедельная отчетность)" data-ar="التحليلات (تقرير أسبوعي)">Аналитика (еженедельная отчетность)</li>
+          <li class="excluded" data-en="Producing" data-ru="Продюсирования" data-ar="الإنتاج">Продюсирования</li>
+          <li class="excluded" data-en="PR Strategy and Media Plan" data-ru="PR стратегия и медиаплан" data-ar="استراتيجية العلاقات العامة وخطة الإعلام">PR стратегия и медиаплан</li>
+          <li class="excluded" data-en="Collaboration with Bloggers (influencers and partnerships)" data-ru="Коллаборация с блоггерами (лидеры мнений и партнерства)" data-ar="التعاون مع المدونين (المؤثرين والشراكات)">Коллаборация с блоггерами (лидеры мнений и партнерства)</li>
+          <li class="excluded" data-en="Personal Brand Promotion (Instagram, TikTok, YouTube)" data-ru="Продвижения личного бренда (Instagram, Tik-Tok, YouTube)" data-ar="ترويج العلامة الشخصية (إنستغرام، تيك توك، يوتيوب)">Продвижения личного бренда (Instagram, Tik-Tok, YouTube)</li>
+          <li class="excluded" data-en="Product Launch" data-ru="Запуск продукта" data-ar="إطلاق المنتج">Запуск продукта</li>
+          <li class="excluded" data-en="Analysis (Target Audience, Market, Benchmark, SWOT)" data-ru="Анализ (ЦА, рынок, бейнчмарк, SWOT)" data-ar="تحليل (الجمهور المستهدف، السوق، المقارنة، SWOT)">Анализ (ЦА, рынок, бейнчмарк, SWOT)</li>
+          <li class="excluded" data-en="Marketing Strategy (Positioning, Branding, USP)" data-ru="Маркетинговая стратегия (позиционирование, брендинг, КПК)" data-ar="استراتيجية التسويق (التموضع، العلامة التجارية، العرض الفريد)">Маркетинговая стратегия (позиционирование, брендинг, КПК)</li>
+          <li class="excluded" data-en="Sales Department Building" data-ru="Построения отдела продаж" data-ar="بناء قسم المبيعات">Построения отдела продаж</li>
+          <li class="excluded" data-en="CRM Implementation + IP Telephony" data-ru="Внедрения CRM + IP телефония" data-ar="تنفيذ نظام CRM + الهاتف عبر الإنترنت">Внедрения CRM + IP телефония</li>
+          <li class="excluded" data-en="AI Manager, Chatbot, Funnel Implementation" data-ru="Внедрения AI менеджера, чат-бот, воронки" data-ar="تنفيذ مدير ذكاء اصطناعي، روبوت محادثة، قمع مبيعات">Внедрения AI менеджера, чат-бот, воронки</li>
+        </ul>
+      </div>
+  
+      <!-- PR Пакет -->
+      <div class="package-card hidden" id="pr-package" onclick="activatePackage('pr')">
+        <h3>PR Packet</h3>
+        <ul>
+          <li data-en="SMM Strategy & Content Plan" data-ru="SMM Стратегия & Контент план" data-ar="استراتيجية SMM وخطة المحتوى">SMM Стратегия & Контент план</li>
+          <li data-en="Production / Post / REELS / Storytelling" data-ru="Продакшн /Post/REELS/Сторителлинг" data-ar="الإنتاج / المنشورات / الريلز / سرد القصص">Продакшн /Post/REELS/Сторителлинг</li>
+          <li data-en="Design" data-ru="Дизайн" data-ar="تصميم">Дизайн</li>
+          <li data-en="Targeting (Creative and Lead Generation)" data-ru="Таргет (креатив и лидогенерация)" data-ar="الاستهداف (الإبداع وتوليد العملاء المحتملين)">Таргет (креатив и лидогенерация)</li>
+          <li data-en="Analytics (weekly reports)" data-ru="Аналитика (еженедельная отчетность)" data-ar="التحليلات (تقرير أسبوعي)">Аналитика (еженедельная отчетность)</li>
+          <li data-en="Producing" data-ru="Продюсирования" data-ar="الإنتاج">Продюсирования</li>
+          <li data-en="PR Strategy and Media Plan" data-ru="PR стратегия и медиаплан" data-ar="استراتيجية العلاقات العامة وخطة الإعلام">PR стратегия и медиаплан</li>
+          <li data-en="Collaboration with Bloggers (influencers and partnerships)" data-ru="Коллаборация с блоггерами (лидеры мнений и партнерства)" data-ar="التعاون مع المدونين (المؤثرين والشراكات)">Коллаборация с блоггерами (лидеры мнений и партнерства)</li>
+          <li data-en="Personal Brand Promotion (Instagram, TikTok, YouTube)" data-ru="Продвижения личного бренда (Instagram, Tik-Tok, YouTube)" data-ar="ترويج العلامة الشخصية (إنستغرام، تيك توك، يوتيوب)">Продвижения личного бренда (Instagram, Tik-Tok, YouTube)</li>
+          <li data-en="Product Launch" data-ru="Запуск продукта" data-ar="إطلاق المنتج">Запуск продукта</li>
+          <li class="excluded" data-en="Analysis (Target Audience, Market, Benchmark, SWOT)" data-ru="Анализ (ЦА, рынок, бейнчмарк, SWOT)" data-ar="تحليل (الجمهور المستهدف، السوق، المقارنة، SWOT)">Анализ (ЦА, рынок, бейнчмарк, SWOT)</li>
+          <li class="excluded" data-en="Marketing Strategy (Positioning, Branding, USP)" data-ru="Маркетинговая стратегия (позиционирование, брендинг, КПК)" data-ar="استراتيجية التسويق (التموضع، العلامة التجارية، العرض الفريد)">Маркетинговая стратегия (позиционирование, брендинг, КПК)</li>
+          <li class="excluded" data-en="Sales Department Building" data-ru="Построения отдела продаж" data-ar="بناء قسم المبيعات">Построения отдела продаж</li>
+          <li class="excluded" data-en="CRM Implementation + IP Telephony" data-ru="Внедрения CRM + IP телефония" data-ar="تنفيذ نظام CRM + الهاتف عبر الإنترنت">Внедрения CRM + IP телефония</li>
+          <li class="excluded" data-en="AI Manager, Chatbot, Funnel Implementation" data-ru="Внедрения AI менеджера, чат-бот, воронки" data-ar="تنفيذ مدير ذكاء اصطناعي، روبوت محادثة، قمع مبيعات">Внедрения AI менеджера, чат-бот, воронки</li>
+        </ul>
+      </div>
+  
+      <!-- VIP Пакет -->
+      <div class="package-card hidden" id="vip-package" onclick="activatePackage('vip')">
+        <h3>VIP Packet</h3>
+        <ul>
+          <li data-en="SMM Strategy & Content Plan" data-ru="SMM Стратегия & Контент план" data-ar="استراتيجية SMM وخطة المحتوى">SMM Стратегия & Контент план</li>
+          <li data-en="Production / Post / REELS / Storytelling" data-ru="Продакшн /Post/REELS/Сторителлинг" data-ar="الإنتاج / المنشورات / الريلز / سرد القصص">Продакшн /Post/REELS/Сторителлинг</li>
+          <li data-en="Design" data-ru="Дизайн" data-ar="تصميم">Дизайн</li>
+          <li data-en="Targeting (Creative and Lead Generation)" data-ru="Таргет (креатив и лидогенерация)" data-ar="الاستهداف (الإبداع وتوليد العملاء المحتملين)">Таргет (креатив и лидогенерация)</li>
+          <li data-en="Analytics (weekly reports)" data-ru="Аналитика (еженедельная отчетность)" data-ar="التحليلات (تقرير أسبوعي)">Аналитика (еженедельная отчетность)</li>
+          <li data-en="Producing" data-ru="Продюсирования" data-ar="الإنتاج">Продюсирования</li>
+          <li data-en="PR Strategy and Media Plan" data-ru="PR стратегия и медиаплан" data-ar="استراتيجية العلاقات العامة وخطة الإعلام">PR стратегия и медиаплан</li>
+          <li data-en="Collaboration with Bloggers (influencers and partnerships)" data-ru="Коллаборация с блоггерами (лидеры мнений и партнерства)" data-ar="التعاون مع المدونين (المؤثرين والشراكات)">Коллаборация с блоггерами (лидеры мнений и партнерства)</li>
+          <li data-en="Personal Brand Promotion (Instagram, TikTok, YouTube)" data-ru="Продвижения личного бренда (Instagram, Tik-Tok, YouTube)" data-ar="ترويج العلامة الشخصية (إنستغرام، تيك توك، يوتيوب)">Продвижения личного бренда (Instagram, Tik-Tok, YouTube)</li>
+          <li data-en="Product Launch" data-ru="Запуск продукта" data-ar="إطلاق المنتج">Запуск продукта</li>
+          <li data-en="Analysis (Target Audience, Market, Benchmark, SWOT)" data-ru="Анализ (ЦА, рынок, бейнчмарк, SWOT)" data-ar="تحليل (الجمهور المستهدف، السوق، المقارنة، SWOT)">Анализ (ЦА, рынок, бейнчмарк, SWOT)</li>
+          <li data-en="Marketing Strategy (Positioning, Branding, USP)" data-ru="Маркетинговая стратегия (позиционирование, брендинг, КПК)" data-ar="استراتيجية التسويق (التموضع، العلامة التجارية، العرض الفريد)">Маркетинговая стратегия (позиционирование, брендинг, КПК)</li>
+          <li data-en="Sales Department Building" data-ru="Построения отдела продаж" data-ar="بناء قسم المبيعات">Построения отдела продаж</li>
+          <li data-en="CRM Implementation + IP Telephony" data-ru="Внедрения CRM + IP телефония" data-ar="تنفيذ نظام CRM + الهاتف عبر الإنترنت">Внедрения CRM + IP телефония</li>
+          <li data-en="AI Manager, Chatbot, Funnel Implementation" data-ru="Внедрения AI менеджера, чат-бот, воронки" data-ar="تنفيذ مدير ذكاء اصطناعي، روبوت محادثة، قمع مبيعات">Внедрения AI менеджера, чат-бот, воронки</li>
+        </ul>
+      </div>
     </div>
+  </section>
+  <!-- CHANGES END: PACKAGES SECTION -->
 
-    <!-- PR-пакет -->
-    <div class="package-card hidden">
-      <h3
-        data-en="PR Package"
-        data-ru="PR-пакет"
-        data-ar="حزمة العلاقات العامة"
-      >
-        PR-пакет
-      </h3>
-      <ul>
-        <li 
-          data-en="Production"
-          data-ru="Продюсирование"
-          data-ar="الإنتاج"
-        >
-          Продюсирование
-        </li>
-        <li 
-          data-en="PR Strategy"
-          data-ru="PR-стратегия"
-          data-ar="استراتيجية العلاقات العامة"
-        >
-          PR-стратегия
-        </li>
-        <li 
-          data-en="Media plan, key messages"
-          data-ru="Медиаплан, ключевые месседжи"
-          data-ar="خطة إعلامية، رسائل رئيسية"
-        >
-          Медиаплан, ключевые месседжи
-        </li>
-        <li 
-          data-en="Personal brand promotion"
-          data-ru="Продвижение личного бренда"
-          data-ar="الترويج للعلامة التجارية الشخصية"
-        >
-          Продвижение личного бренда
-        </li>
-        <li 
-          data-en="Promotion on various platforms: Instagram, TikTok, YouTube, media"
-          data-ru="Продвижение на разных площадках: Instagram, TikTok, YouTube, СМИ"
-          data-ar="الترويج عبر منصات متعددة: إنستغرام، تيك توك، يوتيوب، وسائل الإعلام"
-        >
-          Продвижение на разных площадках: Instagram, TikTok, YouTube, СМИ
-        </li>
-        <li 
-          data-en="Working with influencers"
-          data-ru="Работа с инфлюенсерами"
-          data-ar="العمل مع المؤثرين"
-        >
-          Работа с инфлюенсерами
-        </li>
-        <li 
-          data-en="Opinion leaders, partnerships"
-          data-ru="Лидеры мнений, партнерства"
-          data-ar="قيادات الرأي والشراكات"
-        >
-          Лидеры мнений, партнерства
-        </li>
-      </ul>
-      <a 
-        href="https://wa.me/971553377075?text=Hello!%20I%20want%20to%20purchase%20the%20PR%20package."
-        target="_blank" 
-        class="buy-btn"
-        data-en="Buy Now"
-        data-ru="Купить"
-        data-ar="اشتري الآن"
-      >
-        Купить
-      </a>
-    </div>
-
-    <!-- VIP-пакет -->
-    <div class="package-card hidden">
-      <h3
-        data-en="VIP Package"
-        data-ru="VIP-пакет"
-        data-ar="حزمة VIP"
-      >
-        VIP-пакет
-      </h3>
-      <ul>
-        <li
-          data-en="SMM package + PR package"
-          data-ru="SMM пакет + PR пакет"
-          data-ar="حزمة SMM + حزمة PR"
-        >
-          SMM пакет + PR пакет
-        </li>
-        <li
-          data-en="Market, target audience, competitor analysis"
-          data-ru="Анализ рынка, ЦА, конкурентов"
-          data-ar="تحليل السوق والجمهور المستهدف والمنافسين"
-        >
-          Анализ рынка, ЦА, конкурентов
-        </li>
-        <li
-          data-en="Defining competitive advantages"
-          data-ru="Обозначение конкурентных преимуществ"
-          data-ar="تحديد المزايا التنافسية"
-        >
-          Обозначение конкурентных преимуществ
-        </li>
-        <li
-          data-en="Market positioning"
-          data-ru="Позиционирование на рынке"
-          data-ar="تحديد المكانة في السوق"
-        >
-          Позиционирование на рынке
-        </li>
-        <li
-          data-en="Marketing strategy"
-          data-ru="Маркетинговая стратегия"
-          data-ar="استراتيجية التسويق"
-        >
-          Маркетинговая стратегия
-        </li>
-        <li
-          data-en="Branding"
-          data-ru="Брендинг"
-          data-ar="الهوية التجارية"
-        >
-          Брендинг
-        </li>
-        <li
-          data-en="Individual marketer 24/7"
-          data-ru="Индивидуальный маркетолог 24/7"
-          data-ar="مسوق خاص متوفر على مدار الساعة"
-        >
-          Индивидуальный маркетолог 24/7
-        </li>
-        <li
-          data-en="AI manager, chatbot implementation"
-          data-ru="Внедрение AI менеджер, чат-бот"
-          data-ar="تنفيذ مدير بالذكاء الاصطناعي وشات بوت"
-        >
-          Внедрение AI менеджер, чат-бот
-        </li>
-        <li
-          data-en="CRM implementation"
-          data-ru="Внедрение CRM"
-          data-ar="تنفيذ نظام إدارة علاقات العملاء"
-        >
-          Внедрение CRM
-        </li>
-        <li
-          data-en="Building a sales department"
-          data-ru="Построение отдела продаж"
-          data-ar="إنشاء قسم المبيعات"
-        >
-          Построение отдела продаж
-        </li>
-        <li
-          data-en="*All included: all packages"
-          data-ru="*Все под ключ: включены все пакеты"
-          data-ar="*شامل كل شيء: تتضمن جميع الباقات"
-        >
-          *Все под ключ: включены все пакеты
-        </li>
-      </ul>
-      <a 
-        href="https://wa.me/971553377075?text=Hello!%20I%20want%20to%20purchase%20the%20VIP%20package."
-        target="_blank" 
-        class="buy-btn"
-        data-en="Buy Now"
-        data-ru="Купить"
-        data-ar="اشتري الآن"
-      >
-        Купить
-      </a>
-    </div>
-  </div>
-</section>
   <!-- PROJECTS SECTION -->
   <section class="projects" id="projects">
     <h2 class="section-title hidden" data-en="Our Projects" data-ar="مشاريعنا" data-ru="Наши проекты">
       Наши проекты
     </h2>
     <div class="projects-grid">
-      <!-- Важные проекты (4 шт.) -->
+  
       <div class="project-item hidden">
         <h3 data-en="KIT ISTANBUL" data-ar="كيت اسطنبول" data-ru="KIT ISTANBUL">KIT ISTANBUL</h3>
-        <p data-en="Innovative urban project in Istanbul" data-ar="مشروع حضري مبتكر في اسطنبول" data-ru="Инновационный городской проект в Стамбуле">
+        <p data-en="An innovative urban project in Istanbul"
+           data-ar="مشروع حضري مبتكر في اسطنبول"
+           data-ru="Инновационный городской проект в Стамбуле">
           Инновационный городской проект в Стамбуле
         </p>
+        <a href="https://www.instagram.com/kit_istanbul?igsh=MXdhenJycHM5ZzZ4NA==" style="color: rgb(255, 92, 92);" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
+  
       <div class="project-item hidden">
         <h3 data-en="KIT ASTANA" data-ar="كيت أستانا" data-ru="KIT ASTANA">KIT ASTANA</h3>
-        <p data-en="Cutting-edge design and development in Astana" data-ar="تصميم وتطوير مبتكر في أستانا" data-ru="Современный дизайн и развитие в Астане">
+        <p data-en="Modern design and development in Astana"
+           data-ar="تصميم وتطوير حديث في أستانا"
+           data-ru="Современный дизайн и развитие в Астане">
           Современный дизайн и развитие в Астане
         </p>
+        <a href="https://www.instagram.com/kitastana?igsh=Y3duZzgycXJzNmd0" style="color: rgb(255, 92, 92);" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
+  
       <div class="project-item hidden">
-        <h3 data-en="KIT ALMATY" data-ar="كيت ألماتا" data-ru="KIT ALMATY">KIT ALMATY</h3>
-        <p data-en="State-of-the-art project in Almaty" data-ar="مشروع متطور في ألماتا" data-ru="Передовой проект в Алматы">
+        <h3 data-en="KIT ALMATY" data-ar="كيت ألماتي" data-ru="KIT ALMATY">KIT ALMATY</h3>
+        <p data-en="A leading-edge project in Almaty"
+           data-ar="مشروع رائد في ألماتي"
+           data-ru="Передовой проект в Алматы">
           Передовой проект в Алматы
         </p>
+        <a href="https://www.instagram.com/kit_almaty?igsh=MW50bDdkNnNsc25nNQ==" style="color: rgb(255, 92, 92);" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
-      <div class="project-item hidden">
-        <h3 data-en="BEMINE Properties" data-ar="عقارات بيمين" data-ru="BEMINE Properties">BEMINE Properties</h3>
-        <p data-en="Quality real estate solutions by BEMINE" data-ar="حلول عقارية عالية الجودة من بيمين" data-ru="Качественные решения в сфере недвижимости от BEMINE">
-          Качественные решения в сфере недвижимости
-        </p>
-      </div>
-
-      <!-- Остальные примеры проектов -->
+  
       <div class="project-item hidden">
         <h3 data-en="AYKUN Hotels" data-ar="فنادق أيكون" data-ru="AYKUN Hotels">AYKUN Hotels</h3>
-        <p data-en="Luxury hospitality marketing campaign"
-           data-ar="حملة تسويقية للضيافة الفاخرة"
+        <p data-en="Advertising campaign for a luxury hotel"
+           data-ar="حملة إعلانية لفندق فاخر"
            data-ru="Рекламная кампания для люксового отеля">
-           Рекламная кампания для люксового отеля
+          Рекламная кампания для люксового отеля
         </p>
       </div>
+  
       <div class="project-item hidden">
         <h3 data-en="Energetika Alemi" data-ar="عالم الطاقة" data-ru="Energetika Alemi">Energetika Alemi</h3>
-        <p data-en="SMM & PR for renewable energy brand"
+        <p data-en="SMM and PR for a renewable energy company"
            data-ar="إدارة وسائل التواصل والعلاقات العامة لشركة طاقة متجددة"
            data-ru="SMM и PR для компании в сфере возобновляемой энергии">
-           SMM и PR для компании в сфере возобновляемой энергии
+          SMM и PR для компании в сфере возобновляемой энергии
         </p>
+        <a href="https://www.instagram.com/energetikaalemi?igsh=Y3VsOXhyNHl4Ymk=" style="color: rgb(255, 92, 92);" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
+  
       <div class="project-item hidden">
-        <h3 data-en="NUR-ALIKHAN Academy" data-ar="أكاديمية نور-عليخان" data-ru="NUR-ALIKHAN Academy">NUR-ALIKHAN Academy</h3>
-        <p data-en="Education platform with AI-assisted analytics"
-           data-ar="منصة تعليمية مع تحليلات بالذكاء الاصطناعي"
+        <h3 data-en="NUR-ALIKHAN Academy" data-ar="أكاديمية نور عليخان" data-ru="NUR-ALIKHAN Academy">NUR-ALIKHAN Academy</h3>
+        <p data-en="An educational platform with AI analytics"
+           data-ar="منصة تعليمية بتحليلات الذكاء الاصطناعي"
            data-ru="Образовательная платформа с ИИ-аналитикой">
-           Образовательная платформа с ИИ-аналитикой
+          Образовательная платформа с ИИ-аналитикой
         </p>
+        <a href="https://www.instagram.com/nuralikhan_astana?igsh=NTluMngxMzg4MG5m" style="color: rgb(255, 92, 92);" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
+  
       <div class="project-item hidden">
         <h3 data-en="QAZAN PLOV Restaurant" data-ar="مطعم قازان بلوف" data-ru="QAZAN PLOV Restaurant">QAZAN PLOV Restaurant</h3>
-        <p data-en="Branding and social media growth"
-           data-ar="العلامة التجارية وتنمية وسائل التواصل الاجتماعي"
+        <p data-en="Brand and social media development"
+           data-ar="تطوير العلامة التجارية ووسائل التواصل الاجتماعي"
            data-ru="Развитие бренда и соцсетей">
-           Развитие бренда и соцсетей
+          Развитие бренда и соцсетей
         </p>
+        <a href="https://www.instagram.com/qazanplov.dubai/" style="color: rgb(255, 92, 92);" target="_blank"><i class="fab fa-instagram"></i></a>
       </div>
+  
     </div>
   </section>
-
   <!-- TESTIMONIALS SECTION -->
   <section class="testimonials hidden" id="testimonials">
     <h2 class="section-title" data-en="Testimonials" data-ar="آراء العملاء" data-ru="Отзывы">
       Testimonials
     </h2>
+  
     <div class="testimonial-item hidden">
       <i class="fa-solid fa-quote-left quote-icon"></i>
       <p data-en="PROVENT helped our hotel chain significantly boost online visibility and direct bookings."
-         data-ar="ساعدتنا PROVENT على زيادة الظهور عبر الإنترنت وحجوزات الفنادق بشكل كبير."
-         data-ru="С PROVENT мы смогли заметно увеличить онлайн-присутствие и прямые бронирования в наших отелях.">
-         PROVENT helped our hotel chain significantly boost online visibility and direct bookings.
+         data-ar="ساعدتنا PROVENT في زيادة الظهور عبر الإنترنت والحجوزات المباشرة لسلسلة فنادقنا."
+         data-ru="PROVENT помогла нашей сети отелей значительно повысить онлайн-видимость и количество прямых бронирований.">
+        PROVENT helped our hotel chain significantly boost online visibility and direct bookings.
       </p>
-      <p class="testimonial-author" data-en="Zhannur, AYKUN Hotels" data-ar="– جون، فنادق أيكون" data-ru="– Zhannur, AYKUN Hotels">
-         – Zhannur, AYKUN Hotels
+      <p class="testimonial-author" data-en="– Zhannur, AYKUN Hotels"
+         data-ar="– جاننور، فنادق أيكون"
+         data-ru="– Жаннур, AYKUN Hotels">
+        – Zhannur, AYKUN Hotels
       </p>
     </div>
+  
     <div class="testimonial-item hidden">
       <i class="fa-solid fa-quote-left quote-icon"></i>
       <p data-en="Their AI chatbot solutions saved us time and allowed better engagement with our online audience."
-         data-ar="وفرت لنا حلول روبوتات الدردشة بالذكاء الاصطناعي الكثير من الوقت وحسنت تفاعلنا مع الجمهور."
-         data-ru="ИИ-чат-боты от PROVENT сэкономили нам время и помогли лучше взаимодействовать с аудиторией.">
-         Their AI chatbot solutions saved us time and allowed better engagement with our online audience.
+         data-ar="حلولهم في روبوتات الدردشة بالذكاء الاصطناعي وفرت لنا الوقت وسمحت بتفاعل أفضل مع جمهورنا عبر الإنترنت."
+         data-ru="Их решения с AI-чат-ботами сэкономили нам время и улучшили взаимодействие с онлайн-аудиторией.">
+        Their AI chatbot solutions saved us time and allowed better engagement with our online audience.
       </p>
-      <p class="testimonial-author" data-en="– Aigerim, Energetika Alemi" data-ar="– عائشة، عالم الطاقة" data-ru="– Айгерим, Energetika Alemi">
-         – Aigerim, Energetika Alemi
+      <p class="testimonial-author" data-en="– Aigerim, Energetika Alemi"
+         data-ar="– أيغيريم، عالم الطاقة"
+         data-ru="– Айгерим, Energetika Alemi">
+        – Aigerim, Energetika Alemi
       </p>
     </div>
   </section>
 
-
   <!-- ABOUT US SECTION -->
-<section class="about-us hidden" id="about-us">
-  <div class="about-content">
-    <!-- Заголовок -->
-    <h2 
-      data-en="About Us"
-      data-ru="О нас"
-      data-ar="معلومات عنا"
-    >
-      О нас
-    </h2>
-
-    <!-- Параграф с тремя версиями текста -->
-    <p
-      data-en="We are a team of professionals that creates and implements result-driven marketing strategies. Our mission is to help businesses unlock their potential and effectively engage with their audience."
-      data-ar="نحن فريق من المحترفين نبتكر ونطبق استراتيجيات تسويقية تركز على تحقيق النتائج. مهمتنا هي مساعدة الشركات على استغلال إمكاناتها والتفاعل بفعالية مع جمهورها."
-      data-ru="Мы — команда профессионалов, которая создаёт и воплощает маркетинговые стратегии, нацеленные на результат. Наша миссия — помочь бизнесу раскрыть потенциал и эффективно взаимодействовать со своей аудиторией."
-    >
-      Мы — команда профессионалов, которая создаёт и воплощает маркетинговые стратегии, нацеленные на результат. Наша миссия — помочь бизнесу раскрыть потенциал и эффективно взаимодействовать со своей аудиторией.
-    </p>
-  </div>
-</section>
+  <!-- <section class="about-us hidden" id="about-us">
+    <div class="about-content">
+      <h2 data-en="About Us"
+          data-ru="О нас"
+          data-ar="معلومات عنا"
+      >
+        О нас
+      </h2>
+      <p data-en="We are a team of professionals..."
+         data-ar="نحن فريق من المحترفين..."
+         data-ru="Мы — команда профессионалов..."
+      >
+        Мы — команда профессионалов, которая создаёт и воплощает маркетинговые стратегии...
+      </p>
+    </div>
+  </section> -->
 
   <!-- TEAM SECTION SLIDER -->
   <section class="team" id="team-slider">
-    <h2 class="section-title hidden" 
-        data-en="Our Team" 
-        data-ar="فريقنا" 
-        data-ru="Наша команда">
+    <h2 class="section-title hidden" data-en="Our Team" data-ar="فريقنا" data-ru="Наша команда">
       Наша команда
     </h2>
-  
     <div class="team-slider-container">
       <button class="slider-btn prev">&#10094;</button>
       <div class="team-slider">
-        <!-- Кассенов Арман -->
+  
         <div class="team-slide">
           <div class="team-member">
             <img src="team/arman.png" alt="Kassenov Arman">
-            <h5 data-en="Kassenov Arman – Founder" 
-                data-ar="قاسنوف أرمَان – المؤسس" 
-                data-ru="Кассенов Арман – Основатель">
-              Кассенов Арман – Основатель
-            </h5>
-            <p data-en="Responsible for establishing the agency's vision and strategy" 
-               data-ar="المسؤول عن وضع رؤية الوكالة واستراتيجيتها" 
-               data-ru="Отвечает за формирование видения и стратегии агентства">
-              Отвечает за формирование видения и стратегии агентства
-            </p>
+            <h5 data-en="Kassenov Arman – Founder" data-ar="كاسنوف أرمَان – المؤسس" data-ru="Кассенов Арман – Основатель">Кассенов Арман – Основатель</h5>
+            <p data-en="Responsible for vision and agency strategy" data-ar="مسؤول عن رؤية واستراتيجية الوكالة" data-ru="Отвечает за формирование видения и стратегии агентства">Отвечает за формирование видения и стратегии агентства</p>
           </div>
         </div>
-
+  
         <div class="team-slide">
           <div class="team-member">
             <img src="team/yernur.png" alt="Yernur Eleu">
-            <h5 data-en="Yernur Eleu – CEO" 
-                data-ar="يرنور إليو – المدير التنفيذي" 
-                data-ru="Ернур Елеу – CEO">
-              Ернур Елеу – CEO
-            </h5>
-            <p data-en="Responsible for establishing the agency's vision and strategy" 
-               data-ar="المسؤول عن وضع رؤية الوكالة واستراتيجيتها" 
-               data-ru="Отвечает за формирование видения и стратегии агентства">
-              Отвечает за формирование видения и стратегии агентства
-            </p>
+            <h5 data-en="Yernur Eleu – CEO" data-ar="يرنور إيلو – المدير التنفيذي" data-ru="Ернур Елеу – CEO">Ернур Елеу – CEO</h5>
+            <p data-en="Responsible for vision and agency strategy" data-ar="مسؤول عن رؤية واستراتيجية الوكالة" data-ru="Отвечает за формирование видения и стратегии агентства">Отвечает за формирование видения и стратегии агентства</p>
           </div>
         </div>
-        
-        <!-- Азамат М. -->
+  
         <div class="team-slide">
           <div class="team-member">
             <img src="team/aza.png" alt="Azamat M.">
-            <h5 data-en="Azamat Muratovich – Project Manager" 
-                data-ar="أزامات موراتوفيتش – مدير المشروع" 
-                data-ru="Азамат Муратович – Проектный менеджер">
-              Азамат Муратович – Проектный менеджер
-            </h5>
-            <p data-en="Oversees project planning, deadlines, and team coordination" 
-               data-ar="يشرف على تخطيط المشروع والمواعيد النهائية وتنسيق الفريق" 
-               data-ru="Руководит планированием проектов, контролем сроков и координацией команды">
-              Руководит планированием проектов, контролем сроков и координацией команды
-            </p>
+            <h5 data-en="Azamat Muratovich – COO" data-ar="عزمت مراتوفيتش – المدير التشغيلي" data-ru="Азамат Муратович – Операционный директор">Азамат Муратович – Операционный директор</h5>
+            <p data-en="Leads project planning and team coordination" data-ar="يقود تخطيط المشاريع وتنسيق الفريق" data-ru="Руководит планированием проектов и координацией команды">Руководит планированием проектов и координацией команды</p>
           </div>
         </div>
   
-        <!-- Гульмира -->
         <div class="team-slide">
           <div class="team-member">
             <img src="team/gulmira.png" alt="Gulmira">
-            <h5 data-en="Gulmira – Sales Department Expert" 
-                data-ar="جولميرا – خبيرة قسم المبيعات" 
-                data-ru="Гульмира – Эксперт по отделу продаж">
-              Гульмира – Эксперт по отделу продаж
-            </h5>
-            <p data-en="Builds and optimizes the company's sales department" 
-               data-ar="تؤسس وتحسن قسم المبيعات في الشركة" 
-               data-ru="Формирует и оптимизирует отдел продаж">
-              Формирует и оптимизирует отдел продаж
-            </p>
+            <h5 data-en="Gulmira – Sales Department Expert" data-ar="غولميرا – خبيرة قسم المبيعات" data-ru="Гульмира – Эксперт по отделу продаж">Гульмира – Эксперт по отделу продаж</h5>
+            <p data-en="Builds and optimizes the sales department" data-ar="تقوم بتكوين وتحسين قسم المبيعات" data-ru="Формирует и оптимизирует отдел продаж">Формирует и оптимизирует отдел продаж</p>
           </div>
         </div>
   
-        <!-- Алиулы Алишер -->
         <div class="team-slide">
           <div class="team-member">
             <img src="team/alish.png" alt="Aliuly Alisher">
-            <h5 data-en="Aliuly Alisher – Content Creator / Videographer"
-                data-ar="عليولي أليشَر – منشئ محتوى/مصور فيديو"
-                data-ru="Алиулы Алишер – Контент-креатор / Видеограф">
-              Алиулы Алишер – Контент-креатор / Видеограф
-            </h5>
-            <p data-en="Responsible for creating engaging video and social content" 
-               data-ar="مسؤول عن إنشاء محتوى فيديو واجتماعي جذاب" 
-               data-ru="Отвечает за создание привлекательного видеоконтента и контента для соцсетей">
-              Отвечает за создание привлекательного видеоконтента и контента для соцсетей
-            </p>
+            <h5 data-en="Aliuly Alisher – Content Creator / Videographer" data-ar="عليولي عليشر – منشئ محتوى / مصور فيديو" data-ru="Алиулы Алишер – Контент-креатор / Видеограф">Алиулы Алишер – Контент-креатор / Видеограф</h5>
+            <p data-en="Creates creative video and social media content" data-ar="ينشئ محتوى فيديو وإعلام اجتماعي إبداعي" data-ru="Создаёт креативный видео- и соцмедиа-контент">Создаёт креативный видео- и соцмедиа-контент</p>
           </div>
         </div>
   
-        <!-- Елнар Ершат -->
         <div class="team-slide">
           <div class="team-member">
             <img src="team/elnar.png" alt="Elnar Ershat">
-            <h5 data-en="Elnar Ershat – Videographer / Content Creator"
-                data-ar="إلنار إرشات – مصور فيديو/منشئ محتوى"
-                data-ru="Елнар Ершат – Видеограф / Контент-креатор">
-              Елнар Ершат – Видеограф / Контент-креатор
-            </h5>
-            <p data-en="Focuses on visual storytelling and creative video production" 
-               data-ar="يركز على السرد البصري وإنتاج الفيديو الإبداعي" 
-               data-ru="Занимается визуальным сторителлингом и креативным видеопроизводством">
-              Занимается визуальным сторителлингом и креативным видеопроизводством
-            </p>
+            <h5 data-en="Elnar Ershat – Videographer / Content Creator" data-ar="إلنار إرشات – مصور فيديو / منشئ محتوى" data-ru="Елнар Ершат – Видеограф / Контент-креатор">Елнар Ершат – Видеограф / Контент-креатор</h5>
+            <p data-en="Responsible for visual storytelling and video production" data-ar="مسؤول عن السرد البصري وإنتاج الفيديو" data-ru="Отвечает за визуальный сторителлинг и видеопроизводство">Отвечает за визуальный сторителлинг и видеопроизводство</p>
           </div>
         </div>
   
-        <!-- ШЫНГЫС (AI/IT) -->
         <div class="team-slide">
           <div class="team-member">
             <img src="team/shyn.png" alt="Shyngys">
-            <h5 data-en="Shyngys – AI / IT Specialist" 
-                data-ar="شنغيس – متخصص في الذكاء الاصطناعي وتقنية المعلومات" 
-                data-ru="ШЫНГЫС – Специалист по AI / IT">
-              ШЫНГЫС – Специалист по AI / IT
-            </h5>
-            <p data-en="Implements AI and develops chatbots for business automation" 
-               data-ar="يطبق الذكاء الاصطناعي ويطور روبوتات الدردشة لأتمتة الأعمال" 
-               data-ru="Внедряет AI и разрабатывает чат-боты для автоматизации бизнеса">
-              Внедряет AI и разрабатывает чат-боты для автоматизации бизнеса
-            </p>
+            <h5 data-en="Shyngys – AI / IT Specialist" data-ar="شنغيس – متخصص في الذكاء الاصطناعي / تكنولوجيا المعلومات" data-ru="ШЫНГЫС – Специалист по AI / IT">ШЫНГЫС – Специалист по AI / IT</h5>
+            <p data-en="Implements AI and chatbots to automate business" data-ar="ينفذ الذكاء الاصطناعي والروبوتات لتلقين الأعمال" data-ru="Внедряет AI и чат-боты для автоматизации бизнеса">Внедряет AI и чат-боты для автоматизации бизнеса</p>
           </div>
         </div>
   
-        <!-- Батырхан Бакбергенулы -->
         <div class="team-slide">
           <div class="team-member">
             <img src="team/batyr.png" alt="Batyrkhan Bakbergenuly">
-            <h5 data-en="Batyrkhan Bakbergenuly – Content Producer" 
-                data-ar="باتيرخان باكبَرْغينولي – منتج محتوى" 
-                data-ru="Батырхан Бакбергенулы – Контент-продюсер">
-              Батырхан Бакбергенулы – Контент-продюсер
-            </h5>
-            <p data-en="Oversees production of high-quality media content" 
-               data-ar="يشرف على إنتاج محتوى إعلامي عالي الجودة" 
-               data-ru="Курирует производство высококачественного медиаконтента">
-              Курирует производство высококачественного медиаконтента
-            </p>
+            <h5 data-en="Batyrkhan Bakbergenuly – Content Producer" data-ar="باتيرخان باكبرجينولي – منتج محتوى" data-ru="Батырхан Бакбергенулы – Контент-продюсер">Батырхан Бакбергенулы – Контент-продюсер</h5>
+            <p data-en="Oversees production of high-quality media content" data-ar="يشرف على إنتاج محتوى إعلامي عالي الجودة" data-ru="Курирует производство высококачественного медиаконтента">Курирует производство высококачественного медиаконтента</p>
           </div>
         </div>
   
-        <!-- Фариза -->
         <div class="team-slide">
           <div class="team-member">
             <img src="team/fariza.png" alt="Fariza Ametkyzy">
-            <h5 data-en="Fariza Ametkyzy – SMM Specialist / Mobilograph" 
-                data-ar="فارزة أمتقيزي – أخصائية وسائل التواصل الاجتماعي / مصورة الهاتف" 
-                data-ru="Фариза Аметкызы – SMM-специалист / Мобилограф">
-              Фариза Аметкызы – SMM-специалист / Мобилограф
-            </h5>
-            <p data-en="Develops social media strategies and mobile-first content" 
-               data-ar="تطور استراتيجيات وسائل التواصل الاجتماعي ومحتوى الهاتف المحمول" 
-               data-ru="Разрабатывает SMM-стратегии и мобильный контент">
-              Разрабатывает SMM-стратегии и мобильный контент
-            </p>
+            <h5 data-en="Fariza Ametkyzy – SMM Specialist / Mobile Content Creator" data-ar="فاريزا أميتقيزي – مختصة SMM / صانعة محتوى موبايل" data-ru="Фариза Аметкызы – SMM-специалист / Мобилограф">Фариза Аметкызы – SMM-специалист / Мобилограф</h5>
+            <p data-en="Develops SMM strategies and mobile content" data-ar="تطور استراتيجيات SMM ومحتوى الموبايل" data-ru="Разрабатывает SMM-стратегии и мобильный контент">Разрабатывает SMM-стратегии и мобильный контент</p>
           </div>
         </div>
   
-        <!-- Батырбек Аружан -->
         <div class="team-slide">
           <div class="team-member">
             <img src="team/aru.png" alt="Batyrbek Aruzhan">
-            <h5 data-en="Batyrbek Aruzhan – Marketer" 
-                data-ar="باتيربيك أروجان – مسوق" 
-                data-ru="Батырбек Аружан – Маркетолог">
-              Батырбек Аружан – Маркетолог
-            </h5>
-            <p data-en="Focused on driving growth through marketing campaigns" 
-               data-ar="يركز على تحقيق النمو من خلال الحملات التسويقية" 
-               data-ru="Занимается ростом продаж через маркетинговые кампании">
-              Занимается ростом продаж через маркетинговые кампании
-            </p>
+            <h5 data-en="Batyrbek Aruzhan – Project Manager" data-ar="باتيربيك أروجان – مدير مشروع" data-ru="Батырбек Аружан – Проджект менеджер">Батырбек Аружан – Проджект менеджер</h5>
+            <p data-en="Drives sales growth through marketing campaigns" data-ar="يُسهم في زيادة المبيعات عبر الحملات التسويقية" data-ru="Занимается ростом продаж через маркетинговые кампании">Занимается ростом продаж через маркетинговые кампании</p>
           </div>
         </div>
   
-        <!-- Артур -->
         <div class="team-slide">
           <div class="team-member">
             <img src="team/artur.png" alt="Artur Ismailov">
-            <h5 data-en="Artur Ismailov – Producer" 
-                data-ar="أرتور إسماعيلوف – منتج" 
-                data-ru="Артур Исмаилов – Продюсер">
-              Артур Исмаилов – Продюсер
-            </h5>
-            <p data-en="Creates and manages all stages of production" 
-               data-ar="ينشئ ويدير جميع مراحل الإنتاج" 
-               data-ru="Организует и управляет всеми этапами продакшена">
-              Организует и управляет всеми этапами продакшена
-            </p>
+            <h5 data-en="Artur Ismailov – Producer" data-ar="أرثور إسماعيلوف – المنتج" data-ru="Артур Исмаилов – Продюсер">Артур Исмаилов – Продюсер</h5>
+            <p data-en="Manages all stages of production" data-ar="ينظم ويدير جميع مراحل الإنتاج" data-ru="Организует и управляет всеми этапами продакшена">Организует и управляет всеми этапами продакшена</p>
           </div>
         </div>
   
-        <!-- Акерке -->
         <div class="team-slide">
           <div class="team-member">
-            <img src="team/akerke.png" alt="Akerke – Head of Quality and Control Dept">
-            <h5 
-              data-en="Akerke – Head of Quality and Control Department" 
-              data-ar="أكيركي – رئيس قسم الجودة والتحكم" 
-              data-ru="Акерке – Руководитель отдела контроля и качества"
-            >
-              Акерке – Руководитель отдела контроля и  качества
-            </h5>
-            <p 
-              data-en="Responsible for quality assurance, compliance, and operational standards" 
-              data-ar="مسؤولة عن ضمان الجودة والامتثال والمعايير التشغيلية" 
-              data-ru="Отвечает за контроль качества, соблюдение требований и операционные стандарты"
-            >
-              Отвечает за контроль качества, соблюдение требований и операционные стандарты
-            </p>
+            <img src="team/akerke.png" alt="Akerke">
+            <h5 data-en="Akerke – Head of Quality Control Department" data-ar="أكيركه – رئيسة قسم مراقبة الجودة" data-ru="Акерке – Руководитель отдела контроля качества">Акерке – Руководитель отдела контроля качества</h5>
+            <p data-en="Ensures compliance with standards and requirements" data-ar="تضمن الالتزام بالمعايير والمتطلبات" data-ru="Отвечает за соблюдение требований и операционные стандарты">Отвечает за соблюдение требований и операционные стандарты</p>
           </div>
         </div>
   
-        <!-- Айнура -->
         <div class="team-slide">
           <div class="team-member">
-            <img src="team/ainura.png" alt="Ainura – Targeting Specialist / Designer">
-            <h5 data-en="Ainura – Targeting Specialist / Designer" 
-                data-ar="عينورة – أخصائية الاستهداف / مصممة" 
-                data-ru="Айнура – Таргетолог / Дизайнер">
-              Айнура – Таргетолог / Дизайнер
-            </h5>
-            <p data-en="Optimizes ad campaigns and creates creative design solutions" 
-               data-ar="تحسن الحملات الإعلانية وتبتكر حلولاً تصميمية إبداعية" 
-               data-ru="Оптимизирует рекламные кампании и создает креативные дизайн-решения">
-              Оптимизирует рекламные кампании и создает креативные дизайн-решения
-            </p>
+            <img src="team/ainura.png" alt="Ainura">
+            <h5 data-en="Ainura – Targeting Specialist / Designer" data-ar="أينورا – مختصة استهداف / مصممة" data-ru="Айнура – Таргетолог / Дизайнер">Айнура – Таргетолог / Дизайнер</h5>
+            <p data-en="Optimizes advertising campaigns and creates design solutions" data-ar="تحسن الحملات الإعلانية وتبتكر حلول التصميم" data-ru="Оптимизирует рекламные кампании и создает дизайн-решения">Оптимизирует рекламные кампании и создает дизайн-решения</p>
           </div>
         </div>
   
@@ -1749,16 +1459,39 @@
       <button class="slider-btn next">&#10095;</button>
     </div>
   </section>
+  
+
   <!-- CONTACT SECTION -->
   <section class="contact" id="contact">
     <h2 class="section-title" data-en="Get in Touch" data-ar="تواصل معنا" data-ru="Свяжитесь с нами">
       Get in Touch
     </h2>
     <form class="contact-form" id="contactForm">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="tel" name="phone" placeholder="Phone Number" />
-      <textarea name="message" placeholder="Message" rows="5"></textarea>
-      <button type="submit">Send Message</button>
+      <input type="text" name="name" 
+             placeholder="Your Name" 
+             data-en="Your Name" 
+             data-ar="اسمك" 
+             data-ru="Ваше имя" 
+             required />
+      
+      <input type="tel" name="phone" 
+             placeholder="Phone Number" 
+             data-en="Phone Number" 
+             data-ar="رقم الهاتف" 
+             data-ru="Номер телефона" />
+      
+      <textarea name="message" rows="5" 
+                placeholder="Message" 
+                data-en="Message" 
+                data-ar="رسالة" 
+                data-ru="Сообщение"></textarea>
+      
+      <button type="submit" 
+              data-en="Send Message" 
+              data-ar="إرسال الرسالة" 
+              data-ru="Отправить сообщение">
+        Send Message
+      </button>
     </form>
   </section>
 
@@ -1772,12 +1505,6 @@
         <img style="border-radius: 25px; width: 50%;" src="https://play-lh.googleusercontent.com/55huczUZ05ruaVynURUNqzgTu0qXLF-SPQZKtE9KA6_BavI-g0NgXz1NR98n5xX33HwD" alt="">
       </div>
     </a>
-    <!-- <iframe
-      src="https://widgets.2gis.com/widget?type=firm&regionId=70000&firmId=70000001087009735"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe> -->
   </section>
 
   <!-- FOOTER -->
@@ -1795,17 +1522,17 @@
     <i class="fa-solid fa-arrow-up"></i>
   </div>
 
+  <!-- CHANGES START: DYNAMIC SCRIPTS -->
 <script>
   // === Language Switch Function ===
   function setLang(lang) {
-    // Обновление текста для всех элементов с data-атрибутами
     document.querySelectorAll('[data-' + lang + ']').forEach(el => {
       el.textContent = el.getAttribute('data-' + lang);
     });
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
-    
-    // Обновление активного состояния для десктопных кнопок
+
+    // Desktop buttons
     document.querySelectorAll('.lang-switcher-buttons .lang-btn').forEach(btn => {
       btn.classList.remove('active');
       if (btn.textContent.trim().toUpperCase() === lang.toUpperCase()) {
@@ -1816,14 +1543,12 @@
       }
     });
 
-    // Обновление текста на кнопке dropdown в мобильном хедере
+    // Mobile dropdown
     const dropdownToggle = document.querySelector('.lang-switcher-dropdown .dropdown-toggle');
     if (dropdownToggle) {
       dropdownToggle.textContent = (lang === 'ar') ? 'عربي' : lang.toUpperCase();
     }
   }
-
-  // === Dropdown Toggle for Mobile Language Switcher ===
   function toggleDropdown() {
     document.querySelector('.lang-switcher-dropdown').classList.toggle('show');
   }
@@ -1852,7 +1577,7 @@
     sidebar.classList.remove('open');
   }
 
-  // === Scroll Animations (Intersection Observer) ===
+  // === Intersection Observer for scroll animations ===
   const hiddenElems = document.querySelectorAll('.hidden');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1962,20 +1687,24 @@
     setLang('en');
   });
 
-
-  document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.querySelector(".team-slider");
-    if (!slider) return;
-    const btnPrev = document.querySelector(".slider-btn.prev");
-    const btnNext = document.querySelector(".slider-btn.next");
-
-    btnPrev.addEventListener("click", function() {
-      slider.scrollBy({ left: -300, behavior: "smooth" });
+  // === PACKAGES DYNAMIC TOGGLING ===
+  // При клике на карточку пакета — показываем нужное содержимое без зачёркиваний или с ними.
+  // Но здесь всё уже визуально есть. Если хотите что-то особое — можем анимировать/выделять и т.п.
+  function activatePackage(type) {
+    // Убираем "active" у всех
+    const cards = document.querySelectorAll('.package-card');
+    cards.forEach(card => {
+      card.style.borderColor = 'rgba(0,0,0,0.08)';
+      card.style.transform = 'translateY(0)';
     });
-    btnNext.addEventListener("click", function() {
-      slider.scrollBy({ left: 300, behavior: "smooth" });
-    });
-  });
+    // Подсветим выбранный
+    const current = document.getElementById(type + '-package');
+    if(current){
+      current.style.borderColor = '#775FE1';
+      current.style.transform = 'translateY(-5px)';
+    }
+  }
 </script>
+<!-- CHANGES END: DYNAMIC SCRIPTS -->
 </body>
 </html>
